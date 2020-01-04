@@ -9,8 +9,16 @@
 //make all instance variables private 
 //make all method public 
 
-public class User {
+import java.util.*; 
 
+public class User {
+	private String name; 
+	private ArrayList<String> messages;
+	private String dueDate; 
+	private double numDays; 
+	private int dailyFreq;
+	private String phone; 
+	//constructor
 	
 	
 }
