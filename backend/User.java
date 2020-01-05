@@ -18,19 +18,17 @@ public class User {
 	private String name; 
 	private ArrayList<String> messages;
 	private String dueDate; 
-	private double numDays; 
-	private int dailyFreq;
+	private String dailyFreq;
 	private String phone; 
 	
 	
-	//constructors 
-	public User(String n, ArrayList<String> msg, String dD, double nD,
-			int dF, String p) {
+	//constructor
+	public User(String n, ArrayList<String> msg, String dD,
+			String dF, String p) {
 		
 		this.name = n;
 		this.messages = msg; 
-		this.dueDate = dD; 
-		this.numDays = nD; 
+		this.dueDate = dD;  
 		this.dailyFreq = dF;
 		this.phone = p; 
 	}
@@ -61,19 +59,11 @@ public class User {
 		this.dueDate = d;
 	}
 	
-	public double getnumDays() {
-		return this.numDays; 
-	}
-	
-	public void setnumDays(double d) {
-		this.numDays = d; 
-	}
-	
-	public int getdailyFreq() {
+	public String getdailyFreq() {
 		return this.dailyFreq; 
 	}
 	
-	public void setdailyFreq(int d) {
+	public void setdailyFreq(String d) {
 		this.dailyFreq = d;
 	}
 	

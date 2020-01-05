@@ -67,7 +67,7 @@ public class HomeScreen {
 	//Stage height
 	private int stageY = 900;
 	//Instantiate empty User Class
-	private User user = new User(null, null, null, 0.0, 0, null);
+	private User user = new User(null, null, null, null, null);
 	
 	public Scene start() {
 		
