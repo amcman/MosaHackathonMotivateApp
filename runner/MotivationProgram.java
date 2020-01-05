@@ -1,3 +1,4 @@
+package runner;
 import java.io.FileInputStream;
 
 import javafx.application.Application;
@@ -11,6 +12,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import ui.HomeScreen;
 
 /**
  * The program manages the run flow of the application. It 

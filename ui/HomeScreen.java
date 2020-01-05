@@ -1,3 +1,4 @@
+package ui;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -46,6 +47,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+
+import backend.User;
 import javafx.event.ActionEvent;
 
 
@@ -93,7 +96,7 @@ public class HomeScreen {
 		// Gender Image
 		Image image = null;
 		try {
-			image = new Image(new FileInputStream("src/logo.png"), 800, 800, true, true);
+			image = new Image(new FileInputStream("logo.png"), 800, 800, true, true);
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -118,7 +121,7 @@ public class HomeScreen {
 		//Putting input box within a child vbox
 		VBox inputRectangle = new VBox();
 		inputRectangle.getChildren().add(inputRect);
-		inputRectangle.setViewOrder(5.0);
+		//inputRectangle.setViewOrder(5.0);
 		inputRectangle.setAlignment(Pos.BOTTOM_CENTER);
 		inputRectangle.setPadding(new Insets(200,0,50,0));
 		

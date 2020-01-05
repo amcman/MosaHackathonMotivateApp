@@ -1,3 +1,4 @@
+package backend;
 /*	-Holds all information pertinent 
  * to the user (array list of messages, 
  * goal due date, name, number   
