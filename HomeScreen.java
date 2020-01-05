@@ -126,7 +126,7 @@ public class HomeScreen {
 		TextField nameInput = new TextField();
 		nameInput.setMinWidth(150);
 		HBox nameBox = new HBox(nameInput);
-		nameBox.setViewOrder(0.0);
+		//nameBox.setViewOrder(0.0);
 		nameBox.setAlignment(Pos.CENTER);
 		nameBox.setPadding(new Insets(0,50,0,0));
 		
@@ -134,7 +134,7 @@ public class HomeScreen {
 		TextField goalInput = new TextField();
 		goalInput.setMinWidth(150);
 		HBox goalBox = new HBox(goalInput);
-		goalBox.setViewOrder(0.0);
+		//goalBox.setViewOrder(0.0);
 		goalBox.setAlignment(Pos.CENTER);
 		goalBox.setPadding(new Insets(150,50,0,0));
 		
@@ -145,7 +145,7 @@ public class HomeScreen {
 		frequencyComboBox.getItems().add("Every other day");
 		frequencyComboBox.getItems().add("Once a week");		
 		HBox comboHBox = new HBox(frequencyComboBox);
-		goalBox.setViewOrder(0.0);
+		//goalBox.setViewOrder(0.0);
 		goalBox.setAlignment(Pos.CENTER);
 		goalBox.setPadding(new Insets(300,50,0,0));
 		
