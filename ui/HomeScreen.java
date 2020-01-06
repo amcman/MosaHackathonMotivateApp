@@ -60,15 +60,18 @@ import javafx.event.ActionEvent;
  *
  */
 public class HomeScreen {
-
-	
 	//Stage width
 	private int stageX = 700;
 	//Stage height
 	private int stageY = 1000;
 	//Instantiate empty User Class
 	private User user = new User(null, null, null, null, null);
-	
+	/**
+	 * This class controls creation of the main stage for the program, as well
+	 * as creation of the home screen scene. It provides information on the app
+	 * as well as a brief form for users to fill out before using it.
+	 * @return This method returns a scene for the home screen (type Scene).
+	 */
 	public Scene start() {
 		/**
 		 * INITIAL PAGE SETUP
@@ -132,9 +135,15 @@ public class HomeScreen {
 		 * CREATING INTRODUCTION TEXT
 		 */
 		Text introductionText = new Text(
-				"Welcome to Motivate! When setting long-term goals, it can be hard to stay focused and motivated. Simple cell phone reminders and sticky notes lose their meaning over time.\n" + 
+				"Welcome to Motivate! When setting long-term goals, it can be "
+				+ "hard to stay focused and motivated. Simple cell phone reminders "
+				+ "and sticky notes lose their meaning over time.\n" + 
 				"\n" + 
-				"With Motivate though, you can write yourself numerous personalized motivational messages that will be randomized and sent to you as often as you'd like until you reach your goal. That way, messages stay fresh,  motivation doesn't die, and you achieve your goal. It's that simple. \n" + 
+				"With Motivate though, you can write yourself numerous personalized "
+				+ "motivational messages that will be randomized and sent to you as "
+				+ "often as you'd like until you reach your goal. That way, messages "
+				+ "stay fresh,  motivation doesn't die, and you achieve your goal. "
+				+ "It's that simple. \n" + 
 				"\n" + 
 				"Simply fill out the information below and click continue. "
 				);
@@ -220,6 +229,8 @@ public class HomeScreen {
 
 				}
 				// Add pass off to scene 2: message page.
+				MessagePage messagePage = new MessagePage();
+				messagePage.showMessageEntryPage(mainStage, user);
 			} catch (NullPointerException e1) {
 				Text error = new Text("Please fill all fields correctly to continue.");
 				error.setFont(Font.font("Veranda", 12));
@@ -243,7 +254,3 @@ public class HomeScreen {
 		return homeScene;
 	}
 }
-
-
-
-
