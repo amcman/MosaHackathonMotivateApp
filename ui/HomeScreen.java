@@ -71,6 +71,9 @@ public class HomeScreen {
 	
 	public Scene start() {
 		
+		/**
+		 * INITIAL PAGE SETUP
+		 */
 		//Setting up the main stage and scene
 		Stage mainStage = new Stage();
 		StackPane rootNode = new StackPane();
@@ -93,26 +96,29 @@ public class HomeScreen {
 		titleBox.setAlignment(Pos.TOP_CENTER);
 		titleBox.setPadding(new Insets(145, 0, 0, 0));
 		
-		// Gender Image
+		/**
+		 * ADDING IMAGE
+		 */
 		Image image = null;
 		try {
-			image = new Image(new FileInputStream("logo.png"), 800, 800, true, true);
+			image = new Image(new FileInputStream("src/logo.png"), 800, 800, true, true);
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
 		ImageView imageView = new ImageView(image);
 		imageView.setFitHeight(125);
 		imageView.setFitWidth(125);
 		imageView.setPreserveRatio(true);
-
 		HBox img = new HBox(imageView);
 		img.setAlignment(Pos.TOP_CENTER);
 		img.setPadding(new Insets(10,10,10,10));
 
+		/**
+		 * CREATING GREEN BOX
+		 */
 		//Input Rectangle
-		Rectangle inputRect = new Rectangle(520, 500);
+		Rectangle inputRect = new Rectangle(520, 600);
 		inputRect.setFill(Color.rgb(212, 255, 215));
 		inputRect.setStroke(Color.rgb(98, 245, 108));
 		inputRect.setStrokeWidth(1);
@@ -125,44 +131,85 @@ public class HomeScreen {
 		inputRectangle.setAlignment(Pos.BOTTOM_CENTER);
 		inputRectangle.setPadding(new Insets(200,0,50,0));
 		
+		/**
+		 * CREATING INTRODUCTION TEXT
+		 */
+		Text introductionText = new Text(
+				"Welcome to Motivate! When setting long-term goals, it can be hard to stay focused and motivated. Simple cell phone reminders and sticky notes lose their meaning over time.\n" + 
+				"\n" + 
+				"With Motivate though, you can write yourself numerous personalized motivational messages that will be randomized and sent to you as often as you'd like until you reach your goal. That way, messages stay fresh,  motivation doesn't die, and you achieve your goal. It's that simple. \n" + 
+				"\n" + 
+				"Simply fill out the information below and click continue. "
+				);
+		introductionText.setWrappingWidth(450);
+		introductionText.setTextAlignment(TextAlignment.CENTER);
+		HBox textBox = new HBox(introductionText);
+		textBox.setAlignment(Pos.TOP_CENTER);
+		textBox.setPadding(new Insets(230,0,0,0));
+		
+		
+		/**
+		 * CREATING INPUT FIELDS
+		 */
 		//Name input field
 		TextField nameInput = new TextField();
-		nameInput.setMinWidth(150);
-		HBox nameBox = new HBox(nameInput);
-		//nameBox.setViewOrder(0.0);
-		nameBox.setAlignment(Pos.CENTER);
-		nameBox.setPadding(new Insets(0,50,0,0));
-		
-		//Goal input field
-		TextField goalInput = new TextField();
-		goalInput.setMinWidth(150);
-		HBox goalBox = new HBox(goalInput);
-		//goalBox.setViewOrder(0.0);
-		goalBox.setAlignment(Pos.CENTER);
-		goalBox.setPadding(new Insets(150,50,0,0));
-		
 		//Frequency Dropdown
-		ComboBox frequencyComboBox = new ComboBox();
+		ComboBox<String> frequencyComboBox = new ComboBox<>();
 		frequencyComboBox.getItems().add("Twice a day");
 		frequencyComboBox.getItems().add("Once a day");
 		frequencyComboBox.getItems().add("Every other day");
-		frequencyComboBox.getItems().add("Once a week");		
-		HBox comboHBox = new HBox(frequencyComboBox);
-		//goalBox.setViewOrder(0.0);
-		goalBox.setAlignment(Pos.CENTER);
-		goalBox.setPadding(new Insets(300,50,0,0));
-		
-
+		frequencyComboBox.getItems().add("Once a week");
+		frequencyComboBox.setVisibleRowCount(4);
+		frequencyComboBox.setPrefWidth(165);
+		//Goal input field
+		TextField goalInput = new TextField();
 		//Date picking field for goal end date
 		DatePicker datePicker = new DatePicker();
-	    HBox theDatePicker = new HBox(datePicker);
-	    theDatePicker.setAlignment(Pos.CENTER);
-	    theDatePicker.setPadding(new Insets(450,25,0,0));
-	    
+		//Phone number field
+		TextField phoneNumberInput = new TextField();
+		//Add all elements to a VBox
+	    VBox inputsVBox = new VBox(40);
+	    inputsVBox.getChildren().addAll(nameInput,frequencyComboBox,goalInput,
+	    		datePicker, phoneNumberInput);
+	    inputsVBox.setMaxWidth(150);
+	    inputsVBox.setAlignment(Pos.CENTER);
+	    inputsVBox.setPadding(new Insets(300,0,0,0));
 
+	    
+		/**
+		 * CREATING LABELS FOR INPUT FIELDS
+		 */
+	    Label nameLabel = new Label("Your Name");
+	    Label frequencyOfMessagesLabel = new Label("Frequency of Messages");
+	    Label goalLabel = new Label("Your Goal");
+	    Label goalDurationLabel = new Label("Duration of Goal");
+	    Label phoneNumberLabel = new Label("Your Phone Number");
+	    VBox labelBox = new VBox(50);
+	    labelBox.getChildren().addAll(nameLabel,frequencyOfMessagesLabel,
+	    		goalLabel,goalDurationLabel,phoneNumberLabel);
+	    labelBox.setAlignment(Pos.CENTER_LEFT);
+	    labelBox.setPadding(new Insets(295,0,0,0));
+	    HBox totalInputBox = new HBox(30);
+	    totalInputBox.getChildren().addAll(labelBox,inputsVBox);
+	    totalInputBox.setAlignment(Pos.CENTER);
+	    
+	    /**
+		 * ADDING CONTINUE BUTTON
+		 */
+	    
+	    Button continueButton = new Button("Continue");
+	    
+	    HBox buttonHolder = new HBox(continueButton);
+	    buttonHolder.setAlignment(Pos.BOTTOM_CENTER);
+	    buttonHolder.setPadding(new Insets(0,0,12,0));
+	    
+		/**
+		 * FINAL PAGE EDITS - ADD CHILDREN TO ROOTNODE AND 
+		 * SHOW PAGE/RETURN SCENE
+		 */
 		//Add all children to master VBox
 		rootNode.getChildren().addAll(img,titleBox,inputRectangle,
-				nameBox,goalBox,frequencyComboBox,theDatePicker);
+				textBox, totalInputBox, buttonHolder);
 		//Show the stage
 		mainStage.show();
 
