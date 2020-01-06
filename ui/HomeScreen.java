@@ -99,7 +99,7 @@ public class HomeScreen {
 		 */
 		Image image = null;
 		try {
-			image = new Image(new FileInputStream("src/logo.png"), 800, 800, true, true);
+			image = new Image(new FileInputStream("logo.png"), 800, 800, true, true);
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
