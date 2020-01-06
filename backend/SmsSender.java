@@ -19,7 +19,7 @@ public class SmsSender {
                 .creator(new PhoneNumber("+19086721894"), // to
                         new PhoneNumber("+13605295695" + 
                         		""), // from
-                        "Welcome to Motivate!!!! We are excited to help you accomplish your goal!")
+                        "Welcome to Motivate! Let's accomplish your goal!")
                 .create();
 
         System.out.println(message.getSid());
