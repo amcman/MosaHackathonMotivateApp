@@ -65,12 +65,11 @@ public class HomeScreen {
 	//Stage width
 	private int stageX = 700;
 	//Stage height
-	private int stageY = 900;
+	private int stageY = 1000;
 	//Instantiate empty User Class
 	private User user = new User(null, null, null, null, null);
 	
 	public Scene start() {
-		
 		/**
 		 * INITIAL PAGE SETUP
 		 */
@@ -95,7 +94,6 @@ public class HomeScreen {
 		HBox titleBox = new HBox(title);
 		titleBox.setAlignment(Pos.TOP_CENTER);
 		titleBox.setPadding(new Insets(145, 0, 0, 0));
-		
 		/**
 		 * ADDING IMAGE
 		 */
@@ -112,13 +110,12 @@ public class HomeScreen {
 		imageView.setPreserveRatio(true);
 		HBox img = new HBox(imageView);
 		img.setAlignment(Pos.TOP_CENTER);
-		img.setPadding(new Insets(10,10,10,10));
-
+		img.setPadding(new Insets(10,10,0,10));
 		/**
 		 * CREATING GREEN BOX
 		 */
 		//Input Rectangle
-		Rectangle inputRect = new Rectangle(520, 600);
+		Rectangle inputRect = new Rectangle(520, 650);
 		inputRect.setFill(Color.rgb(212, 255, 215));
 		inputRect.setStroke(Color.rgb(98, 245, 108));
 		inputRect.setStrokeWidth(1);
@@ -146,8 +143,6 @@ public class HomeScreen {
 		HBox textBox = new HBox(introductionText);
 		textBox.setAlignment(Pos.TOP_CENTER);
 		textBox.setPadding(new Insets(230,0,0,0));
-		
-		
 		/**
 		 * CREATING INPUT FIELDS
 		 */
@@ -164,31 +159,35 @@ public class HomeScreen {
 		//Goal input field
 		TextField goalInput = new TextField();
 		//Date picking field for goal end date
-		DatePicker datePicker = new DatePicker();
+		DatePicker startDatePicker = new DatePicker();
+		//Date picking field for goal end date
+		DatePicker endDatePicker = new DatePicker();
 		//Phone number field
 		TextField phoneNumberInput = new TextField();
 		//Add all elements to a VBox
 	    VBox inputsVBox = new VBox(40);
 	    inputsVBox.getChildren().addAll(nameInput,frequencyComboBox,goalInput,
-	    		datePicker, phoneNumberInput);
+	    		startDatePicker, endDatePicker, phoneNumberInput);
 	    inputsVBox.setMaxWidth(150);
 	    inputsVBox.setAlignment(Pos.CENTER);
 	    inputsVBox.setPadding(new Insets(300,0,0,0));
-
-	    
 		/**
 		 * CREATING LABELS FOR INPUT FIELDS
 		 */
 	    Label nameLabel = new Label("Your Name");
 	    Label frequencyOfMessagesLabel = new Label("Frequency of Messages");
 	    Label goalLabel = new Label("Your Goal");
-	    Label goalDurationLabel = new Label("Duration of Goal");
+	    Label goalStartDate = new Label("Goal Start Date");
+	    Label goalEndDate = new Label("Goal End Date");
 	    Label phoneNumberLabel = new Label("Your Phone Number");
 	    VBox labelBox = new VBox(50);
 	    labelBox.getChildren().addAll(nameLabel,frequencyOfMessagesLabel,
-	    		goalLabel,goalDurationLabel,phoneNumberLabel);
+	    		goalLabel, goalStartDate, goalEndDate,phoneNumberLabel);
 	    labelBox.setAlignment(Pos.CENTER_LEFT);
 	    labelBox.setPadding(new Insets(295,0,0,0));
+	    /**
+	     * ADDING THEM ALL TO ONE BOX
+	     */
 	    HBox totalInputBox = new HBox(30);
 	    totalInputBox.getChildren().addAll(labelBox,inputsVBox);
 	    totalInputBox.setAlignment(Pos.CENTER);
@@ -196,30 +195,53 @@ public class HomeScreen {
 	    /**
 		 * ADDING CONTINUE BUTTON
 		 */
-	    
-	    Button continueButton = new Button("Continue");
-	    
+	    //Create button 
+	  	Button continueButton = new Button("Continue");
 	    HBox buttonHolder = new HBox(continueButton);
-	    buttonHolder.setAlignment(Pos.BOTTOM_CENTER);
-	    buttonHolder.setPadding(new Insets(0,0,12,0));
-	    
-		/**
-		 * FINAL PAGE EDITS - ADD CHILDREN TO ROOTNODE AND 
-		 * SHOW PAGE/RETURN SCENE
-		 */
-		//Add all children to master VBox
-		rootNode.getChildren().addAll(img,titleBox,inputRectangle,
-				textBox, totalInputBox, buttonHolder);
-		//Show the stage
-		mainStage.show();
+	    buttonHolder.setAlignment(Pos.CENTER);
+	    VBox allUserInputContent = new VBox(55);
+		allUserInputContent.getChildren().addAll(totalInputBox, buttonHolder);
+		allUserInputContent.setAlignment(Pos.CENTER);
+		allUserInputContent.setPadding(new Insets(135, 0, 0, 0));
+		continueButton.setOnAction(e -> {
+			try {
 
+				user.setName(nameInput.getText());
+				user.setdailyFreq(frequencyComboBox.getValue());
+				// user.setGoal
+				// user.setStartDate()
+				// user.setEndDate()
+				user.setPhone(phoneNumberInput.getText().replaceAll("[()\\s-]+", ""));
+				System.out.println(user.getPhone());
+				// Add in null pointers for the remaining three elements.
+				if (user.getName() == null || user.getdailyFreq() == null || user.getPhone() == null) {
+
+					throw new NullPointerException();
+
+				}
+				// Add pass off to scene 2: message page.
+			} catch (NullPointerException e1) {
+				Text error = new Text("Please fill all fields correctly to continue.");
+				error.setFont(Font.font("Veranda", 12));
+				error.setFill(Color.web("#FF1000"));
+				HBox errorBox = new HBox();
+				errorBox.setMinWidth(300);
+				errorBox.getChildren().add(error);
+				errorBox.setTranslateX(250);
+				errorBox.setTranslateY(820);
+				errorBox.setMouseTransparent(true);
+				rootNode.getChildren().add(errorBox);
+			}
+		});
+		/**
+		 * FINAL PAGE EDITS - ADD CHILDREN TO ROOTNODE AND SHOW PAGE/RETURN SCENE
+		 */
+		// Add all children to master VBox
+		rootNode.getChildren().addAll(img, titleBox, inputRectangle, textBox, allUserInputContent);
+		// Show the stage
+		mainStage.show();
 		return homeScene;
-		
 	}
-	
-	
-	
-	
 }
 
 
