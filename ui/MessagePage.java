@@ -1,23 +1,38 @@
 package ui;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import backend.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class MessagePage {
-	
-	private int stageX = 700;
+	//Stage width
+	private int StageX = 700;
 	//Stage height
-	private int stageY = 1000;
+	private int StageY = 1000;
 	/**
 	 * This method handles displaying the message entry page of the program.
 	 * This page will be responsible for collecting motivational messages from 
@@ -45,7 +60,7 @@ public class MessagePage {
 		//Create Scene and link it with ScrollPane can have only one node
 		//If you omit the width and height, the scene will be sized 
 		//automatically based on the size of the elements contained
-		Scene messageScene = new Scene(scroll, stageX, stageY);
+		Scene messageScene = new Scene(scroll,StageX,StageY);
 		mainStage.setScene(messageScene);
 		mainStage.setTitle("Motivate");
 		// Create and format a title
@@ -54,9 +69,72 @@ public class MessagePage {
 		// Create an HBox for the title
 		HBox titleBox = new HBox(title);
 		titleBox.setAlignment(Pos.TOP_CENTER);
-		titleBox.setPadding(new Insets(145, 0, 0, 0));
+		titleBox.setPadding(new Insets(30, 0, 0, 0));
+		/*
+		 * ADDING INTRODUCTION TEXT
+		 */
+		Text directionsText = new Text(
+				
+				"The box below will allow you to create and save motivational "
+				+ "messages for your future self. Simply type in a message and "
+				+ "click \"Save and Continue\" to write another. When you are done "
+				+ "writing messages for yourself, click submit. \n" + 
+				"\n" + 
+				"Because your goal is XX days long and you would like to receive "
+				+ "messages, at a frequency of XXXX, you can input up to YY unique "
+				+ "messages. However, if you'd like to submit fewer than that, that "
+				+ "is okay. Just click submit when you are done. \n" + 
+				"\n" + 
+				"Please note that if you do not submit the recommended number of "
+				+ "messages, some messages will be repeated when you receive texts "
+				+ "from the app. You must submit at least one message."
+				);
+		directionsText.setTextAlignment(TextAlignment.CENTER);
+		directionsText.setWrappingWidth(450);
+		HBox introTextBox = new HBox(directionsText);
+		introTextBox.setAlignment(Pos.TOP_CENTER);
+		introTextBox.setPadding(new Insets(100,0,0,0));
 		
-		rootNode.getChildren().addAll(titleBox);
+		
+		//Creating intro message box text
+		Text preMessageText = new Text(
+				"Something that motivates me to reach my goal:"
+				);
+		preMessageText.setWrappingWidth(150);
+		preMessageText.setTextAlignment(TextAlignment.CENTER);
+		//Adding info image
+		Image image = null;
+		try {
+			image = new Image(new FileInputStream("info.png"), 800, 800, true, true);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ImageView infoView = new ImageView(image);
+		infoView.setFitHeight(15);
+		infoView.setFitWidth(15);
+		infoView.setPreserveRatio(true);
+		Button infoButton = new Button("",infoView);
+		infoButton.setOnAction(e -> messageInspiration());
+		
+		HBox infoBox = new HBox();
+		infoBox.getChildren().add(infoButton);
+		infoBox.setAlignment(Pos.CENTER);		
+		HBox preMessageBox = new HBox();
+		preMessageBox.getChildren().addAll(preMessageText,infoView);
+		preMessageBox.setAlignment(Pos.CENTER);	
+		preMessageBox.setPadding(new Insets(0,0,0,0));
+
+
+		
+		
+		
+		
+		
+		VBox allMessageContents = new VBox();
+		allMessageContents.getChildren().addAll(preMessageBox);
+		
+		rootNode.getChildren().addAll(titleBox,introTextBox,allMessageContents);
 		
 		
 		mainStage.show();
@@ -64,5 +142,13 @@ public class MessagePage {
 		return messageScene;
 		
 	}
+	
+	/**
+	 * Handles displaying the popup when the info button is clicked next to the
+	 * motivation text field header.
+	 */
+	private void messageInspiration() {
+	   System.out.println("Worked");
+	  }
 
 }
