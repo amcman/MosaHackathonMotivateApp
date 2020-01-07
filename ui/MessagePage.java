@@ -37,6 +37,10 @@ public class MessagePage {
 	private int StageX = 700;
 	//Stage height
 	private int StageY = 1000;
+	//Set the currentColumn variable for message display
+	static int currentColumn = 1;
+	//Set message number in display below textarea
+	static int currentNumber = 1;
 	/**
 	 * This method handles displaying the message entry page of the program.
 	 * This page will be responsible for collecting motivational messages from 
@@ -89,7 +93,8 @@ public class MessagePage {
 				"\n" + 
 				"Please note that if you do not submit the recommended number of "
 				+ "messages, some messages will be repeated when you receive texts "
-				+ "from the app. You must submit at least one message."
+				+ "from the app. You must submit at least one message.\n"
+				+ "\n"
 				);
 		directionsText.setTextAlignment(TextAlignment.CENTER);
 		directionsText.setWrappingWidth(450);
@@ -120,15 +125,16 @@ public class MessagePage {
 		HBox infoBox = new HBox();
 		infoBox.getChildren().add(infoButton);
 		infoBox.setAlignment(Pos.CENTER);		
-		HBox preMessageBox = new HBox(10);
+		HBox preMessageBox = new HBox(5);
 		preMessageBox.getChildren().addAll(preMessageText,infoView);
 		preMessageBox.setAlignment(Pos.BOTTOM_CENTER);	
+		preMessageBox.setPadding(new Insets(0,0,0,20));
 		/**
 		 * SET FIELD FOR ADDING MESSAGES
 		 */
 		TextArea messageHolder = new TextArea();
 		messageHolder.setMaxHeight(100);
-		messageHolder.setMaxWidth(150);
+		messageHolder.setMaxWidth(200);
 		messageHolder.setWrapText(true);
 		HBox messageHolderBox = new HBox();
 		messageHolderBox.getChildren().addAll(messageHolder);
@@ -154,67 +160,113 @@ public class MessagePage {
 				);
 		messageListText.setTextAlignment(TextAlignment.CENTER);
 		messageListText.setWrappingWidth(450);
+		messageListText.setFill(Color.web("FFFFFF"));
 		HBox messageListTextBox = new HBox();
 		messageListTextBox.getChildren().add(messageListText);
 		messageListTextBox.setAlignment(Pos.CENTER);
 		/**
+		 * CREATING AN EMPTY ERROR MESSAGE
+		 */
+		Text errorMessage = new Text("Please enter some text before moving forward.");
+		errorMessage.setFont(Font.font("Veranda", 12));
+		errorMessage.setFill(Color.web("#FFFFFF"));
+		HBox errorBox = new HBox();
+		errorBox.setMinWidth(300);
+		errorBox.getChildren().add(errorMessage);
+		errorBox.setAlignment(Pos.CENTER);
+		errorBox.setMaxHeight(20);
+		/**
+		 * ADDING ALL INTERACTIVE ELEMENTS TO A VBOX
+		 */
+		VBox allMessageContents = new VBox(10);
+		allMessageContents.getChildren().addAll(preMessageBox,messageHolderBox,buttonBox,
+				errorBox, messageListTextBox);
+		allMessageContents.setAlignment(Pos.BOTTOM_CENTER);
+		/**
 		 * CREATING COLUMNS OF MESSAGES
 		 */
-		VBox leftMessageColumn = new VBox();
+		VBox leftMessageColumn = new VBox(5);
 		leftMessageColumn.setAlignment(Pos.CENTER_LEFT);
-		VBox centerMessageColumn = new VBox();
+		VBox centerMessageColumn = new VBox(5);
 		centerMessageColumn.setAlignment(Pos.CENTER);
-		VBox rightMessageColumn = new VBox();
+		VBox rightMessageColumn = new VBox(5);
 		rightMessageColumn.setAlignment(Pos.CENTER_RIGHT);
-		HBox messageColumnsBox = new HBox();
+		HBox messageColumnsBox = new HBox(100);
 		messageColumnsBox.getChildren().addAll(leftMessageColumn,centerMessageColumn,
 				rightMessageColumn);
 		messageColumnsBox.setAlignment(Pos.CENTER);
+		/**
+		 * ADDING ALL ELEMENTS TO FINAL VBOX
+		 */
+		VBox wholePageVBox = new VBox(10);
+		wholePageVBox.getChildren().addAll(titleBox,introTextBox,
+				allMessageContents, messageColumnsBox);
+		wholePageVBox.setPadding(new Insets(40,0,0,0));
+		/**
+		 * GIVING THE BUTTONS ACTION
+		 */
 		saveAndContinue.setOnAction(e -> {
 			try {
-				if(messageHolder.getText() == null) {
+				if(messageHolder.getText().equals("")) {
 					throw new NullPointerException();
 				}
-				messageHolder.clear();
 				//Add the message to the arrayList.
+				//Clear the text area
+				messageHolder.clear();
+				messageListText.setFill(Color.web("#000000"));
+				if(currentColumn == 1) {
+					leftMessageColumn.getChildren().add(messageDisplayer());
+					currentColumn = 2;
+				}
+				else if(currentColumn == 2) {
+					centerMessageColumn.getChildren().add(messageDisplayer());
+					currentColumn = 3;
+				}
+				else {
+					rightMessageColumn.getChildren().add(messageDisplayer());
+					currentColumn = 1;
+				}
 			}
 			catch(NullPointerException e1) {
-				Text error = new Text("Please fill all fields correctly to continue.");
-				error.setFont(Font.font("Veranda", 12));
-				error.setFill(Color.web("#FF1000"));
-				HBox errorBox = new HBox();
-				errorBox.setMinWidth(300);
-				errorBox.getChildren().add(error);
-				errorBox.setTranslateX(250);
-				errorBox.setTranslateY(820);
-				errorBox.setMouseTransparent(true);
-				rootNode.getChildren().add(errorBox);
+				errorMessage.setFill(Color.web("#FF1000"));
+			}
+		});
+		submit.setOnAction(e -> {
+			try {
+				if(messageHolder.getText().equals("")) {
+					throw new NullPointerException();
+				}
+			}
+			catch(NullPointerException e2) {
+				errorMessage.setFill(Color.web("#FF1000"));
 			}
 		});
 		/**
 		 * FINAL STAGE - ADDING ITEMS TO OVERALL BOXES AND SHOWING THE SCREEN
 		 */
-		VBox allMessageContents = new VBox(50);
-		allMessageContents.getChildren().addAll(preMessageBox,messageHolderBox,buttonBox,
-				messageListTextBox);
-		allMessageContents.setAlignment(Pos.BOTTOM_CENTER);
-		VBox wholePageVBox = new VBox(10);
-		wholePageVBox.getChildren().addAll(titleBox,introTextBox,allMessageContents,messageColumnsBox);
 		rootNode.getChildren().add(wholePageVBox);
-		
-		
 		mainStage.show();
-		
 		return messageScene;
-		
 	}
-	
 	/**
 	 * Handles displaying the popup when the info button is clicked next to the
 	 * motivation text field header.
 	 */
 	private void messageInspiration() {
 	   System.out.println("Worked");
-	  }
-
+	}
+	/**
+	 * Create a Text object that takes on the value of the message inputted.
+	 * @param indexNumber The message number that is being inputted
+	 * @return Returns the string Message # where # represents the number the message is.
+	 */
+	public Text messageDisplayer() {
+		
+		Text message = new Text("Message " + currentNumber);
+		message.setFont(Font.font("Veranda",FontWeight.BOLD,14));
+		message.setFill(Color.web("41A641"));
+		currentNumber++;
+		return message;
+	}
+	
 }
