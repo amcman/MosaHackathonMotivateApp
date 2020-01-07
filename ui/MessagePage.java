@@ -10,8 +10,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
@@ -20,6 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -94,9 +98,9 @@ public class MessagePage {
 		HBox introTextBox = new HBox(directionsText);
 		introTextBox.setAlignment(Pos.TOP_CENTER);
 		introTextBox.setPadding(new Insets(100,0,0,0));
-		
-		
-		//Creating intro message box text
+		/**
+		 * CREATE INTRO TEXT ABOVE MESSAGE AREA
+		 */
 		Text preMessageText = new Text(
 				"Something that motivates me to reach my goal:"
 				);
@@ -116,25 +120,95 @@ public class MessagePage {
 		infoView.setPreserveRatio(true);
 		Button infoButton = new Button("",infoView);
 		infoButton.setOnAction(e -> messageInspiration());
-		
 		HBox infoBox = new HBox();
 		infoBox.getChildren().add(infoButton);
 		infoBox.setAlignment(Pos.CENTER);		
 		HBox preMessageBox = new HBox();
 		preMessageBox.getChildren().addAll(preMessageText,infoView);
-		preMessageBox.setAlignment(Pos.CENTER);	
-		preMessageBox.setPadding(new Insets(0,0,0,0));
-
-
+		preMessageBox.setAlignment(Pos.BOTTOM_CENTER);	
+		/**
+		 * SET FIELD FOR ADDING MESSAGES
+		 */
+		TextArea messageHolder = new TextArea();
+		messageHolder.setMaxHeight(100);
+		messageHolder.setMaxWidth(150);
+		messageHolder.setWrapText(true);
+		HBox messageHolderBox = new HBox();
+		messageHolderBox.getChildren().addAll(messageHolder);
+		messageHolderBox.setAlignment(Pos.CENTER);
+		/**
+		 * SAVE AND SUBMIT BUTTON BOXES
+		 */
+		Button saveAndContinue = new Button("Save");
+		saveAndContinue.setWrapText(true);
+		saveAndContinue.setMaxWidth(80);
+		Button submit = new Button("Submit");
+		HBox buttonBox = new HBox(15);
+		buttonBox.getChildren().addAll(saveAndContinue,submit);
+		buttonBox.setAlignment(Pos.CENTER);
+		/**
+		 * SET INTRO TEXT ABOVE PAST MESSAGE COLUMNS
+		 */
+		Text messageListText = new Text(
+				"Hover over the info icons to see one of your previous messages."
+				+ "If you want to see some messages more often than others, click "
+				+ "the info icon, and copy and paste that message text into the box above "
+				+ "to create a duplicate."
+				);
+		messageListText.setTextAlignment(TextAlignment.CENTER);
+		messageListText.setWrappingWidth(450);
+		HBox messageListTextBox = new HBox();
+		messageListTextBox.getChildren().add(messageListText);
+		messageListTextBox.setAlignment(Pos.CENTER);
+		/**
+		 * CREATING COLUMNS OF MESSAGES
+		 */
+		VBox leftMessageColumn = new VBox();
+		leftMessageColumn.setAlignment(Pos.CENTER_LEFT);
+		VBox centerMessageColumn = new VBox();
+		centerMessageColumn.setAlignment(Pos.CENTER);
+		VBox rightMessageColumn = new VBox();
+		rightMessageColumn.setAlignment(Pos.CENTER_RIGHT);
+		HBox messageColumnsBox = new HBox();
+		messageColumnsBox.getChildren().addAll(leftMessageColumn,centerMessageColumn,
+				rightMessageColumn);
+		messageColumnsBox.setAlignment(Pos.CENTER);
 		
+		saveAndContinue.setOnAction(e -> {
+			
+			try {
+				
+				
+				if(messageHolder.getText() == null) {
+					throw new NullPointerException();
+				}
+				
+			}
+			catch(NullPointerException e1) {
+				Text error = new Text("Please fill all fields correctly to continue.");
+				error.setFont(Font.font("Veranda", 12));
+				error.setFill(Color.web("#FF1000"));
+				HBox errorBox = new HBox();
+				errorBox.setMinWidth(300);
+				errorBox.getChildren().add(error);
+				errorBox.setTranslateX(250);
+				errorBox.setTranslateY(820);
+				errorBox.setMouseTransparent(true);
+				rootNode.getChildren().add(errorBox);
+			}
+			
+		});
 		
+		/**
+		 * FINAL STAGE - ADDING ITEMS TO OVERALL BOXES AND SHOWING THE SCREEN
+		 */
+		VBox allMessageContents = new VBox(20);
+		allMessageContents.getChildren().addAll(preMessageBox,messageHolderBox,buttonBox,
+				messageListTextBox);
+		allMessageContents.setAlignment(Pos.BOTTOM_CENTER);
 		
-		
-		
-		VBox allMessageContents = new VBox();
-		allMessageContents.getChildren().addAll(preMessageBox);
-		
-		rootNode.getChildren().addAll(titleBox,introTextBox,allMessageContents);
+		rootNode.getChildren().addAll(titleBox,introTextBox,
+				allMessageContents,messageColumnsBox);
 		
 		
 		mainStage.show();
