@@ -50,7 +50,6 @@ public class MessagePage {
 	 * @return
 	 */
 	public Scene showMessageEntryPage(Stage primaryStage, User user) {
-		
 		/**
 		 * INITIAL PAGE SETUP
 		 */
@@ -73,7 +72,6 @@ public class MessagePage {
 		// Create an HBox for the title
 		HBox titleBox = new HBox(title);
 		titleBox.setAlignment(Pos.TOP_CENTER);
-		titleBox.setPadding(new Insets(30, 0, 0, 0));
 		/*
 		 * ADDING INTRODUCTION TEXT
 		 */
@@ -97,7 +95,6 @@ public class MessagePage {
 		directionsText.setWrappingWidth(450);
 		HBox introTextBox = new HBox(directionsText);
 		introTextBox.setAlignment(Pos.TOP_CENTER);
-		introTextBox.setPadding(new Insets(100,0,0,0));
 		/**
 		 * CREATE INTRO TEXT ABOVE MESSAGE AREA
 		 */
@@ -123,7 +120,7 @@ public class MessagePage {
 		HBox infoBox = new HBox();
 		infoBox.getChildren().add(infoButton);
 		infoBox.setAlignment(Pos.CENTER);		
-		HBox preMessageBox = new HBox();
+		HBox preMessageBox = new HBox(10);
 		preMessageBox.getChildren().addAll(preMessageText,infoView);
 		preMessageBox.setAlignment(Pos.BOTTOM_CENTER);	
 		/**
@@ -173,16 +170,13 @@ public class MessagePage {
 		messageColumnsBox.getChildren().addAll(leftMessageColumn,centerMessageColumn,
 				rightMessageColumn);
 		messageColumnsBox.setAlignment(Pos.CENTER);
-		
 		saveAndContinue.setOnAction(e -> {
-			
 			try {
-				
-				
 				if(messageHolder.getText() == null) {
 					throw new NullPointerException();
 				}
-				
+				messageHolder.clear();
+				//Add the message to the arrayList.
 			}
 			catch(NullPointerException e1) {
 				Text error = new Text("Please fill all fields correctly to continue.");
@@ -196,19 +190,17 @@ public class MessagePage {
 				errorBox.setMouseTransparent(true);
 				rootNode.getChildren().add(errorBox);
 			}
-			
 		});
-		
 		/**
 		 * FINAL STAGE - ADDING ITEMS TO OVERALL BOXES AND SHOWING THE SCREEN
 		 */
-		VBox allMessageContents = new VBox(20);
+		VBox allMessageContents = new VBox(50);
 		allMessageContents.getChildren().addAll(preMessageBox,messageHolderBox,buttonBox,
 				messageListTextBox);
 		allMessageContents.setAlignment(Pos.BOTTOM_CENTER);
-		
-		rootNode.getChildren().addAll(titleBox,introTextBox,
-				allMessageContents,messageColumnsBox);
+		VBox wholePageVBox = new VBox(10);
+		wholePageVBox.getChildren().addAll(titleBox,introTextBox,allMessageContents,messageColumnsBox);
+		rootNode.getChildren().add(wholePageVBox);
 		
 		
 		mainStage.show();
