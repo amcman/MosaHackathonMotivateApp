@@ -120,11 +120,12 @@ public class MessagePage {
 		infoView.setFitHeight(15);
 		infoView.setFitWidth(15);
 		infoView.setPreserveRatio(true);
-		Button infoButton = new Button("",infoView);
-		infoButton.setOnAction(e -> messageInspiration());
+		Button infoButton = new Button("test",infoView);
+		infoButton.setOnAction(e -> {
+			System.out.println("TEST");
+		});
 		HBox infoBox = new HBox();
 		infoBox.getChildren().add(infoButton);
-		infoBox.setAlignment(Pos.CENTER);		
 		HBox preMessageBox = new HBox(5);
 		preMessageBox.getChildren().addAll(preMessageText,infoView);
 		preMessageBox.setAlignment(Pos.BOTTOM_CENTER);	
@@ -226,6 +227,8 @@ public class MessagePage {
 					rightMessageColumn.getChildren().add(messageDisplayer());
 					currentColumn = 1;
 				}
+				//Add message to arraylist
+				//user.setMsg(message);
 			}
 			catch(NullPointerException e1) {
 				errorMessage.setFill(Color.web("#FF1000"));
