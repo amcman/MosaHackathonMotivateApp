@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
@@ -120,16 +121,15 @@ public class MessagePage {
 		infoView.setFitHeight(15);
 		infoView.setFitWidth(15);
 		infoView.setPreserveRatio(true);
-		Button infoButton = new Button("test",infoView);
+		Button infoButton = new Button("",infoView);
+		infoButton.setStyle("-fx-background-color: transparent");
+		HBox preMessageBox = new HBox(5);
+		preMessageBox.getChildren().addAll(preMessageText,infoButton);
+		preMessageBox.setAlignment(Pos.BOTTOM_CENTER);	
+		preMessageBox.setPadding(new Insets(0,0,0,20));
 		infoButton.setOnAction(e -> {
 			System.out.println("TEST");
 		});
-		HBox infoBox = new HBox();
-		infoBox.getChildren().add(infoButton);
-		HBox preMessageBox = new HBox(5);
-		preMessageBox.getChildren().addAll(preMessageText,infoView);
-		preMessageBox.setAlignment(Pos.BOTTOM_CENTER);	
-		preMessageBox.setPadding(new Insets(0,0,0,20));
 		/**
 		 * SET FIELD FOR ADDING MESSAGES
 		 */
@@ -264,13 +264,32 @@ public class MessagePage {
 	 * @param indexNumber The message number that is being inputted
 	 * @return Returns the string Message # where # represents the number the message is.
 	 */
-	public Text messageDisplayer() {
+	public HBox messageDisplayer() {
 		
 		Text message = new Text("Message " + currentNumber);
-		message.setFont(Font.font("Veranda",FontWeight.BOLD,14));
+		message.setFont(Font.font("Veranda", FontWeight.BOLD, 14));
 		message.setFill(Color.web("41A641"));
+		// messageIcon.png
+		Image iconImage = null;
+		try {
+			iconImage = new Image(new FileInputStream("messageIcon.png"), 800, 800, true, true);
+		} catch (FileNotFoundException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		ImageView messageIcon = new ImageView(iconImage);
+		messageIcon.setFitHeight(10);
+		messageIcon.setFitWidth(10);
+		messageIcon.setPreserveRatio(true);
+		Button messageButton = new Button("", messageIcon);
+		messageButton.setStyle("-fx-background-color: transparent");
+		Tooltip buttonTool = new Tooltip("TEST");
+		messageButton.setTooltip(buttonTool);
+		messageButton.setAlignment(Pos.TOP_CENTER);
+		HBox messageInfoBox = new HBox(2);
+		messageInfoBox.getChildren().addAll(message,messageButton);
 		currentNumber++;
-		return message;
+		return messageInfoBox;
 	}
 	
 }
