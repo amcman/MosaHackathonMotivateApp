@@ -10,15 +10,19 @@ package backend;
 //make all instance variables private 
 //make all method public 
 
-import java.util.*; 
+import java.util.*;
+
+import javafx.scene.control.DatePicker; 
 
 public class User {
 	
 	//variables 
 	private String name; 
 	private ArrayList<String> messages;
-	private String dueDate; 
+	private DatePicker startDate; 
+	private DatePicker endDate; 
 	private String dailyFreq;
+	private String goal; 
 	private String phone; 
 	
 	
