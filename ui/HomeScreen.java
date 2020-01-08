@@ -220,7 +220,7 @@ public class HomeScreen {
 				// user.setGoal
 				// user.setStartDate()
 				// user.setEndDate()
-				user.setPhone(phoneNumberInput.getText().replaceAll("[()\\s-]+", ""));
+				user.setPhone("+1" + phoneNumberInput.getText().replaceAll("[()\\s-]+", ""));
 				System.out.println(user.getPhone());
 				// Add in null pointers for the remaining three elements.
 				if (user.getName() == null || user.getdailyFreq() == null || user.getPhone() == null) {
