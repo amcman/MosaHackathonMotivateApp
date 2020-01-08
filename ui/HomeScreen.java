@@ -68,7 +68,7 @@ public class HomeScreen {
 	//Stage height
 	private int stageY = 1000;
 	//Instantiate empty User Class
-	private User user = new User(null, null, null, null, null);
+	private User user = new User();
 	/**
 	 * This class controls creation of the main stage for the program, as well
 	 * as creation of the home screen scene. It provides information on the app
@@ -233,7 +233,7 @@ public class HomeScreen {
 				user.setPhone("+1" + phoneNumberInput.getText().replaceAll("[()\\s-]+", ""));
 				// Add in null pointers for the remaining three elements.
 				Date date = java.sql.Date.valueOf(startDatePicker.getValue());
-				System.out.println(date);
+				System.out.println(user.getPhone());
 				if (user.getName() == null || user.getdailyFreq() == null || user.getPhone() == null
 						//||user.getStartDate() == null || user.getEndDate() == null || user.getGoal == null
 						//|| add in phone number validation and date validation
