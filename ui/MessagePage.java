@@ -227,6 +227,7 @@ public class MessagePage {
 					rightMessageColumn.getChildren().add(messageDisplayer());
 					currentColumn = 1;
 				}
+				errorMessage.setFill(Color.web("#FFFFFF"));
 				//Add message to arraylist
 				//user.setMsg(message);
 			}

@@ -46,6 +46,9 @@ import javafx.application.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import backend.User;
@@ -143,7 +146,8 @@ public class HomeScreen {
 				+ "motivational messages that will be randomized and sent to you as "
 				+ "often as you'd like until you reach your goal. That way, messages "
 				+ "stay fresh,  motivation doesn't die, and you achieve your goal. "
-				+ "It's that simple. \n" + 
+				+ "It's that simple. Please note though, this program only currently serves "
+				+ "user with US cell phone numbers. \n" + 
 				"\n" + 
 				"Simply fill out the information below and click continue. "
 				);
@@ -183,17 +187,23 @@ public class HomeScreen {
 		/**
 		 * CREATING LABELS FOR INPUT FIELDS
 		 */
-	    Label nameLabel = new Label("Your Name");
+	    Label nameLabel = new Label("Your Name \n ");
+	    nameLabel.setTextAlignment(TextAlignment.CENTER);
 	    Label frequencyOfMessagesLabel = new Label("Frequency of Messages");
+	    frequencyOfMessagesLabel.setTextAlignment(TextAlignment.CENTER);
 	    Label goalLabel = new Label("Your Goal");
-	    Label goalStartDate = new Label("Goal Start Date");
-	    Label goalEndDate = new Label("Goal End Date");
-	    Label phoneNumberLabel = new Label("Your Phone Number");
-	    VBox labelBox = new VBox(50);
+	    goalLabel.setTextAlignment(TextAlignment.CENTER);
+	    Label goalStartDate = new Label("Goal Start Date \n (Format: mm/dd/yyyy)");
+	    goalStartDate.setTextAlignment(TextAlignment.RIGHT);
+	    Label goalEndDate = new Label("Goal End Date \n (Format: mm/dd/yyyy)");
+	    goalEndDate.setTextAlignment(TextAlignment.RIGHT);
+	    Label phoneNumberLabel = new Label("Your Phone Number \n (10-digits)");
+	    phoneNumberLabel.setTextAlignment(TextAlignment.RIGHT);
+	    VBox labelBox = new VBox(40);
 	    labelBox.getChildren().addAll(nameLabel,frequencyOfMessagesLabel,
 	    		goalLabel, goalStartDate, goalEndDate,phoneNumberLabel);
-	    labelBox.setAlignment(Pos.CENTER_LEFT);
-	    labelBox.setPadding(new Insets(295,0,0,0));
+	    labelBox.setAlignment(Pos.CENTER_RIGHT);
+	    labelBox.setPadding(new Insets(308,0,0,0));
 	    /**
 	     * ADDING THEM ALL TO ONE BOX
 	     */
@@ -217,13 +227,19 @@ public class HomeScreen {
 
 				user.setName(nameInput.getText());
 				user.setdailyFreq(frequencyComboBox.getValue());
-				// user.setGoal
-				// user.setStartDate()
-				// user.setEndDate()
+				// user.setGoal();
+				// user.setStartDate(goalStartDate.getText(););
+				// user.setEndDate(goalEndDate.getText(););
 				user.setPhone("+1" + phoneNumberInput.getText().replaceAll("[()\\s-]+", ""));
-				System.out.println(user.getPhone());
 				// Add in null pointers for the remaining three elements.
-				if (user.getName() == null || user.getdailyFreq() == null || user.getPhone() == null) {
+				Date date = java.sql.Date.valueOf(startDatePicker.getValue());
+				System.out.println(date);
+				if (user.getName() == null || user.getdailyFreq() == null || user.getPhone() == null
+						//||user.getStartDate() == null || user.getEndDate() == null || user.getGoal == null
+						//|| add in phone number validation and date validation
+						||user.getPhone().length() != 12
+						
+						) {
 
 					throw new NullPointerException();
 

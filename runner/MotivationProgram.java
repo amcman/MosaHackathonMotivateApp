@@ -35,7 +35,8 @@ public class MotivationProgram extends Application {
         //create user and resultsViewer object
         HomeScreen introPage = new HomeScreen();
         introPage.start();
-
+        //Thank you pop up
+        //Loop for timed message deployment
 
     }
 }
