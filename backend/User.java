@@ -52,8 +52,8 @@ public class User {
 	}
 	
 	//to to: modify this to add msg to the arraylist. 
-	public void setMsg(ArrayList<String> m) {
-		this.messages = m; 
+	public void setMsg(String s) {
+		this.messages.add(s); 
 	}
 	
 	public DatePicker getStartDate() {
