@@ -10,15 +10,19 @@ package backend;
 //make all instance variables private 
 //make all method public 
 
-import java.util.*; 
+import java.util.*;
+
+import javafx.scene.control.DatePicker; 
 
 public class User {
 	
 	//variables 
 	private String name; 
 	private ArrayList<String> messages;
-	private String dueDate; 
+	private DatePicker startDate; 
+	private DatePicker endDate; 
 	private String dailyFreq;
+	private String goal; 
 	private String phone; 
 	
 	
@@ -52,12 +56,20 @@ public class User {
 		this.messages = m; 
 	}
 	
-	public String getdueDate() {
-		return this.dueDate; 
+	public DatePicker getStartDate() {
+		return this.startDate; 
 	}
 	
-	public void setdueDate(String d) {
-		this.dueDate = d;
+	public void setStartDate(DatePicker d) {
+		this.startDate = d;
+	}
+	
+	public DatePicker getEndDate() {
+		return this.endDate; 
+	}
+	
+	public void setEndDate(DatePicker d) {
+		this.endDate = d;
 	}
 	
 	public String getdailyFreq() {
@@ -66,6 +78,14 @@ public class User {
 	
 	public void setdailyFreq(String d) {
 		this.dailyFreq = d;
+	}
+	
+	public String getGoal() {
+		return this.goal; 
+	}
+	
+	public void setGoal(String g) {
+		this.goal = g; 
 	}
 	
 	public String getPhone() {
