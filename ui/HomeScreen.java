@@ -51,6 +51,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
+
 import backend.User;
 import javafx.event.ActionEvent;
 
@@ -224,20 +225,21 @@ public class HomeScreen {
 		allUserInputContent.setPadding(new Insets(135, 0, 0, 0));
 		continueButton.setOnAction(e -> {
 			try {
-
+				Date startdate = java.sql.Date.valueOf(startDatePicker.getValue());
+				Date enddate = java.sql.Date.valueOf(endDatePicker.getValue());
+				String validPhoneNumber = phoneNumberInput.getText().replaceAll("[()\\s-]+", "");
 				user.setName(nameInput.getText());
 				user.setdailyFreq(frequencyComboBox.getValue());
 				// user.setGoal();
-				// user.setStartDate(goalStartDate.getText(););
-				// user.setEndDate(goalEndDate.getText(););
-				user.setPhone("+1" + phoneNumberInput.getText().replaceAll("[()\\s-]+", ""));
+				// user.setStartDate(startDate);
+				// user.setEndDate(endDate);
+				user.setPhone("+1" + validPhoneNumber);
 				// Add in null pointers for the remaining three elements.
-				Date date = java.sql.Date.valueOf(startDatePicker.getValue());
 				System.out.println(user.getPhone());
 				if (user.getName() == null || user.getdailyFreq() == null || user.getPhone() == null
 						//||user.getStartDate() == null || user.getEndDate() == null || user.getGoal == null
 						//|| add in phone number validation and date validation
-						||user.getPhone().length() != 12
+						||user.getPhone().length() != 12 || !validPhoneNumber.matches("^-?\\d+$")
 						
 						) {
 
