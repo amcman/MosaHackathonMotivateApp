@@ -23,14 +23,14 @@ public class User {
 	
 	
 	//constructor
-	public User(String n, ArrayList<String> msg, String dD,
-			String dF, String p) {
+	public User() {//String n, ArrayList<String> msg, String dD,
+			//String dF, String p) {
 		
-		this.name = n;
-		this.messages = msg; 
-		this.dueDate = dD;  
-		this.dailyFreq = dF;
-		this.phone = p; 
+		//this.name = n;
+		//this.messages = msg; 
+		//this.dueDate = dD;  
+		//this.dailyFreq = dF;
+		//this.phone = p; 
 	}
 	
 	//getters and setters 
@@ -47,6 +47,7 @@ public class User {
 		return this.messages; 
 	}
 	
+	//to to: modify this to add msg to the arraylist. 
 	public void setMsg(ArrayList<String> m) {
 		this.messages = m; 
 	}
