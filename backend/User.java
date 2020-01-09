@@ -10,9 +10,7 @@ package backend;
 //make all instance variables private 
 //make all method public 
 
-import java.util.*;
-
-import javafx.scene.control.DatePicker; 
+import java.util.*; 
 
 public class User {
 	
