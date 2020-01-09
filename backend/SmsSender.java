@@ -1,5 +1,8 @@
 package backend;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 //Install the Java helper library from twilio.com/docs/libraries/java
 import com.twilio.Twilio; 
 import com.twilio.rest.api.v2010.account.Message; 
@@ -8,12 +11,14 @@ import com.twilio.type.PhoneNumber;
 public class SmsSender {
 	
 	User user; 
+	ValueCalculators calc;
 	
 	public SmsSender() {
 		this.user = new User();
+		this.calc = new ValueCalculators(); 
 	}
 	
-	
+	ArrayList<String> motiMsgs = user.getMsg();
 	
 	// Find your Account Sid and Auth Token at twilio.com/console
     public static final String ACCOUNT_SID =
@@ -21,6 +26,7 @@ public class SmsSender {
     public static final String AUTH_TOKEN =
             "469722a6cbeb5a8c44d5917e4ef87fa4";
 
+    // Text the user a motivational message
     public void sendSms() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
@@ -28,9 +34,19 @@ public class SmsSender {
                 .creator(new PhoneNumber(user.getPhone()), // to
                         new PhoneNumber("+13605295695" + 
                         		""), // from
-                        "Welcome to Motivate! Let's accomplish your goal!")
+                        getRandomMessage())
                 .create();
 
         System.out.println(message.getSid());
+    }
+    
+    // Generate a random message from the ArrayList of motivational messages the user entered
+    public String getRandomMessage() {
+    	
+    	Random r = new Random(); 
+    	int randomIndex = r.nextInt(motiMsgs.size());
+    	
+		return motiMsgs.get(randomIndex);
+    	
     }
 }
