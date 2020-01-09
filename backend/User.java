@@ -49,7 +49,6 @@ public class User {
 		return this.messages; 
 	}
 	
-	//to to: modify this to add msg to the arraylist. 
 	public void setMsg(String s) {
 		this.messages.add(s); 
 	}
