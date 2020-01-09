@@ -213,23 +213,22 @@ public class MessagePage {
 				}
 				//Add the message to the arrayList.
 				//Clear the text area
-				messageHolder.clear();
 				messageListText.setFill(Color.web("#000000"));
 				if(currentColumn == 1) {
-					leftMessageColumn.getChildren().add(messageDisplayer());
+					leftMessageColumn.getChildren().add(messageDisplayer(messageHolder.getText()));
 					currentColumn = 2;
 				}
 				else if(currentColumn == 2) {
-					centerMessageColumn.getChildren().add(messageDisplayer());
+					centerMessageColumn.getChildren().add(messageDisplayer(messageHolder.getText()));
 					currentColumn = 3;
 				}
 				else {
-					rightMessageColumn.getChildren().add(messageDisplayer());
+					rightMessageColumn.getChildren().add(messageDisplayer(messageHolder.getText()));
 					currentColumn = 1;
 				}
+				user.setMsg(messageHolder.getText());
 				errorMessage.setFill(Color.web("#FFFFFF"));
-				//Add message to arraylist
-				//user.setMsg(message);
+				messageHolder.clear();
 			}
 			catch(NullPointerException e1) {
 				errorMessage.setFill(Color.web("#FF1000"));
@@ -264,7 +263,7 @@ public class MessagePage {
 	 * @param indexNumber The message number that is being inputted
 	 * @return Returns the string Message # where # represents the number the message is.
 	 */
-	public HBox messageDisplayer() {
+	public HBox messageDisplayer(String messageToDisplay) {
 		
 		Text message = new Text("Message " + currentNumber);
 		message.setFont(Font.font("Veranda", FontWeight.BOLD, 14));
@@ -283,7 +282,9 @@ public class MessagePage {
 		messageIcon.setPreserveRatio(true);
 		Button messageButton = new Button("", messageIcon);
 		messageButton.setStyle("-fx-background-color: transparent");
-		Tooltip buttonTool = new Tooltip("TEST");
+		Tooltip buttonTool = new Tooltip(messageToDisplay);
+		buttonTool.prefWidth(150);
+		buttonTool.setWrapText(true);
 		messageButton.setTooltip(buttonTool);
 		messageButton.setAlignment(Pos.TOP_CENTER);
 		HBox messageInfoBox = new HBox(2);

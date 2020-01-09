@@ -18,7 +18,7 @@ public class User {
 	
 	//variables 
 	private String name; 
-	private ArrayList<String> messages;
+	private ArrayList<String> messages = new ArrayList<String>();
 	private DatePicker startDate; 
 	private DatePicker endDate; 
 	private String dailyFreq;
