@@ -104,13 +104,13 @@ public class MessagePage {
 				"The box below will allow you to create and save motivational "
 				+ "messages for your future self. Simply type in a message and "
 				+ "click \"Save and Continue\" to write another. When you are done "
-				+ "writing messages for yourself, click submit. \n" + 
+				+ "writing messages for yourself, click \"Submit\". \n" + 
 				"\n" + 
 				"Because your goal is \"" + "INPUT GOAL DAYS HERE" + "\" days long and you would like to receive "
-				+ "messages, at a frequency of \"" + user.getdailyFreq() + "\", you can input up "
+				+ "messages, at a frequency of " + user.getdailyFreq().toLowerCase() + ", it's recommended that you input up "
 				+ "to " + "INPUT NUMBER OF MESSAGES" +  " unique "
 				+ "messages. However, if you'd like to submit fewer than that, that "
-				+ "is okay. Just click submit when you are done. \n" + 
+				+ "is okay. \n" + 
 				"\n" + 
 				"Please note that if you do not submit the recommended number of "
 				+ "messages, some messages will be repeated when you receive texts "
@@ -193,10 +193,10 @@ public class MessagePage {
 		 * SET INTRO TEXT ABOVE PAST MESSAGE COLUMNS
 		 */
 		Text messageListText = new Text(
-				"Hover over the info icons to see one of your previous messages."
-				+ "If you want to see some messages more often than others, click "
-				+ "the info icon, and copy and paste that message text into the box above "
-				+ "to create a duplicate."
+				"Hover over the message icon(s) below to see one of your previous messages. "
+				+ "If you want to see some messages more often than others, just re-enter "
+				+ "the message, and it will increase the frequency at which you receive "
+				+ "that message."
 				);
 		messageListText.setTextAlignment(TextAlignment.CENTER);
 		messageListText.setWrappingWidth(450);
