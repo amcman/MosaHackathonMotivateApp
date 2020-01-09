@@ -19,8 +19,8 @@ public class User {
 	//variables 
 	private String name; 
 	private ArrayList<String> messages = new ArrayList<String>();
-	private DatePicker startDate; 
-	private DatePicker endDate; 
+	private Date startDate; 
+	private Date endDate; 
 	private String dailyFreq;
 	private String goal; 
 	private String phone; 
@@ -56,19 +56,19 @@ public class User {
 		this.messages.add(s); 
 	}
 	
-	public DatePicker getStartDate() {
+	public Date getStartDate() {
 		return this.startDate; 
 	}
 	
-	public void setStartDate(DatePicker d) {
+	public void setStartDate(Date d) {
 		this.startDate = d;
 	}
 	
-	public DatePicker getEndDate() {
+	public Date getEndDate() {
 		return this.endDate; 
 	}
 	
-	public void setEndDate(DatePicker d) {
+	public void setEndDate(Date d) {
 		this.endDate = d;
 	}
 	

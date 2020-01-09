@@ -219,28 +219,26 @@ public class HomeScreen {
 	  	Button continueButton = new Button("Continue");
 	    HBox buttonHolder = new HBox(continueButton);
 	    buttonHolder.setAlignment(Pos.CENTER);
-	    VBox allUserInputContent = new VBox(55);
+	    VBox allUserInputContent = new VBox(40);
 		allUserInputContent.getChildren().addAll(totalInputBox, buttonHolder);
 		allUserInputContent.setAlignment(Pos.CENTER);
 		allUserInputContent.setPadding(new Insets(135, 0, 0, 0));
 		continueButton.setOnAction(e -> {
 			try {
-				Date startdate = java.sql.Date.valueOf(startDatePicker.getValue());
-				Date enddate = java.sql.Date.valueOf(endDatePicker.getValue());
+				Date startDate = java.sql.Date.valueOf(startDatePicker.getValue());
+				Date endDate = java.sql.Date.valueOf(endDatePicker.getValue());
 				String validPhoneNumber = phoneNumberInput.getText().replaceAll("[()\\s-]+", "");
 				user.setName(nameInput.getText());
 				user.setdailyFreq(frequencyComboBox.getValue());
-				// user.setGoal();
-				// user.setStartDate(startDate);
-				// user.setEndDate(endDate);
+				user.setGoal(goalInput.getText());
+				user.setStartDate(startDate);
+				user.setEndDate(endDate);
 				user.setPhone("+1" + validPhoneNumber);
 				// Add in null pointers for the remaining three elements.
 				System.out.println(user.getPhone());
 				if (user.getName() == null || user.getdailyFreq() == null || user.getPhone() == null
-						//||user.getStartDate() == null || user.getEndDate() == null || user.getGoal == null
-						//|| add in phone number validation and date validation
-						||user.getPhone().length() != 12 || !validPhoneNumber.matches("^-?\\d+$")
-						
+						||user.getStartDate() == null || user.getEndDate() == null || user.getGoal() == null
+						||user.getPhone().length() != 12 || !validPhoneNumber.matches("^-?\\d+$")						
 						) {
 
 					throw new NullPointerException();
@@ -257,7 +255,7 @@ public class HomeScreen {
 				errorBox.setMinWidth(300);
 				errorBox.getChildren().add(error);
 				errorBox.setTranslateX(250);
-				errorBox.setTranslateY(820);
+				errorBox.setTranslateY(830);
 				errorBox.setMouseTransparent(true);
 				rootNode.getChildren().add(errorBox);
 			}

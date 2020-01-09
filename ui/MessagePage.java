@@ -18,6 +18,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -25,6 +27,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -101,6 +104,20 @@ public class MessagePage {
 		directionsText.setWrappingWidth(450);
 		HBox introTextBox = new HBox(directionsText);
 		introTextBox.setAlignment(Pos.TOP_CENTER);
+		/**
+		 * CREATING COLOR BOX
+		 */
+		Rectangle inputRect = new Rectangle(520, 350);
+		inputRect.setFill(Color.rgb(212, 255, 215));
+		inputRect.setStroke(Color.rgb(98, 245, 108));
+		inputRect.setStrokeWidth(1);
+		inputRect.setArcHeight(35.0);
+		inputRect.setArcWidth(25.0);
+		//Putting input box within a child vbox
+		VBox inputRectangle = new VBox();
+		inputRectangle.getChildren().add(inputRect);
+		inputRectangle.setAlignment(Pos.CENTER);
+		inputRectangle.setPadding(new Insets(0,0,50,0));
 		/**
 		 * CREATE INTRO TEXT ABOVE MESSAGE AREA
 		 */
@@ -200,7 +217,7 @@ public class MessagePage {
 		 * ADDING ALL ELEMENTS TO FINAL VBOX
 		 */
 		VBox wholePageVBox = new VBox(10);
-		wholePageVBox.getChildren().addAll(titleBox,introTextBox,
+		wholePageVBox.getChildren().addAll(titleBox,introTextBox,inputRectangle,
 				allMessageContents, messageColumnsBox);
 		wholePageVBox.setPadding(new Insets(40,0,0,0));
 		/**
