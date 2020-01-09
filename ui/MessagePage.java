@@ -76,11 +76,26 @@ public class MessagePage {
 		mainStage.setTitle("Motivate");
 		// Create and format a title
 		Text title = new Text("Motivate");
-		title.setFont(Font.font("Arial Rounded MT", FontWeight.BOLD, FontPosture.ITALIC, 30));
-		// Create an HBox for the title
-		HBox titleBox = new HBox(title);
+		title.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 30));
+		title.setFill(Color.web("#FF826E"));		/**
+		 * ADDING MESSAGE ICON
+		 */
+		// Adding info image
+		Image texting = null;
+		try {
+			texting = new Image(new FileInputStream("textMessageIcon.png"), 800, 800, true, true);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ImageView textMessageIcon = new ImageView(texting);
+		textMessageIcon.setFitHeight(75);
+		textMessageIcon.setFitWidth(75);
+		textMessageIcon.setPreserveRatio(true);
+		VBox titleBox = new VBox(3);
 		titleBox.setAlignment(Pos.TOP_CENTER);
-		titleBox.setPadding(new Insets(0,0,100,0));
+		titleBox.setPadding(new Insets(0,0,60,0));
+		titleBox.getChildren().addAll(textMessageIcon,title);
 		/*
 		 * ADDING INTRODUCTION TEXT
 		 */
@@ -109,7 +124,7 @@ public class MessagePage {
 		/**
 		 * CREATING COLOR BOX
 		 */
-		Rectangle inputRect = new Rectangle(520, 460);
+		Rectangle inputRect = new Rectangle(520, 430);
 		inputRect.setFill(Color.rgb(212, 255, 215));
 		inputRect.setStroke(Color.rgb(98, 245, 108));
 		inputRect.setStrokeWidth(1);
@@ -120,7 +135,7 @@ public class MessagePage {
 		inputRectangle.getChildren().add(inputRect);
 		inputRectangle.setAlignment(Pos.CENTER);
 		inputRectangle.setMaxHeight(460);
-		inputRectangle.setPadding(new Insets(110,0,50,0));
+		inputRectangle.setPadding(new Insets(120,0,50,0));
 		/**
 		 * CREATE INTRO TEXT ABOVE MESSAGE AREA
 		 */
@@ -145,11 +160,15 @@ public class MessagePage {
 		infoButton.setStyle("-fx-background-color: transparent");
 		HBox preMessageBox = new HBox(5);
 		preMessageBox.getChildren().addAll(preMessageText,infoButton);
-		preMessageBox.setAlignment(Pos.BOTTOM_CENTER);	
-		preMessageBox.setPadding(new Insets(0,0,0,20));
+		preMessageBox.setAlignment(Pos.BOTTOM_CENTER);
+		preMessageBox.setPadding(new Insets(0, 0, 0, 20));
 		infoButton.setOnAction(e -> {
 			System.out.println("TEST");
 		});
+		HBox textIconBox = new HBox(5);
+		textIconBox.getChildren().addAll(preMessageText, infoButton);
+		textIconBox.setAlignment(Pos.TOP_CENTER);
+		textIconBox.setPadding(new Insets(0, 0, 0, 20));
 		/**
 		 * SET FIELD FOR ADDING MESSAGES
 		 */
@@ -185,6 +204,7 @@ public class MessagePage {
 		HBox messageListTextBox = new HBox();
 		messageListTextBox.getChildren().add(messageListText);
 		messageListTextBox.setAlignment(Pos.CENTER);
+		messageListTextBox.setPadding(new Insets(15,0,0,0));
 		/**
 		 * CREATING AN EMPTY ERROR MESSAGE
 		 */
@@ -206,7 +226,7 @@ public class MessagePage {
 		/**
 		 * ADDING ALL ELEMENTS TO FINAL VBOX
 		 */
-		VBox wholePageVBox = new VBox(10);
+		VBox wholePageVBox = new VBox();
 		wholePageVBox.getChildren().addAll(titleBox,introTextBox,
 				allMessageContents);
 		wholePageVBox.setPadding(new Insets(0,0,0,0));

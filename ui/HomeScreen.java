@@ -96,7 +96,8 @@ public class HomeScreen {
 		mainStage.setTitle("Motivate");
 		// Create and format a title
 		Text title = new Text("Motivate");
-		title.setFont(Font.font("Arial Rounded MT", FontWeight.BOLD, FontPosture.ITALIC, 30));
+		title.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 30));
+		title.setFill(Color.web("#FF826E"));
 		// Create an HBox for the title
 		HBox titleBox = new HBox(title);
 		titleBox.setAlignment(Pos.TOP_CENTER);
