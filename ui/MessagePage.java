@@ -71,7 +71,7 @@ public class MessagePage {
 		//Create Scene and link it with ScrollPane can have only one node
 		//If you omit the width and height, the scene will be sized 
 		//automatically based on the size of the elements contained
-		Scene messageScene = new Scene(scroll,StageX,StageY);
+		Scene messageScene = new Scene(scroll,StageX, StageY);
 		mainStage.setScene(messageScene);
 		mainStage.setTitle("Motivate");
 		// Create and format a title
@@ -80,6 +80,7 @@ public class MessagePage {
 		// Create an HBox for the title
 		HBox titleBox = new HBox(title);
 		titleBox.setAlignment(Pos.TOP_CENTER);
+		titleBox.setPadding(new Insets(0,0,100,0));
 		/*
 		 * ADDING INTRODUCTION TEXT
 		 */
@@ -90,8 +91,9 @@ public class MessagePage {
 				+ "click \"Save and Continue\" to write another. When you are done "
 				+ "writing messages for yourself, click submit. \n" + 
 				"\n" + 
-				"Because your goal is XX days long and you would like to receive "
-				+ "messages, at a frequency of XXXX, you can input up to YY unique "
+				"Because your goal is \"" + "INPUT GOAL DAYS HERE" + "\" days long and you would like to receive "
+				+ "messages, at a frequency of \"" + user.getdailyFreq() + "\", you can input up "
+				+ "to " + "INPUT NUMBER OF MESSAGES" +  " unique "
 				+ "messages. However, if you'd like to submit fewer than that, that "
 				+ "is okay. Just click submit when you are done. \n" + 
 				"\n" + 
@@ -107,7 +109,7 @@ public class MessagePage {
 		/**
 		 * CREATING COLOR BOX
 		 */
-		Rectangle inputRect = new Rectangle(520, 350);
+		Rectangle inputRect = new Rectangle(520, 460);
 		inputRect.setFill(Color.rgb(212, 255, 215));
 		inputRect.setStroke(Color.rgb(98, 245, 108));
 		inputRect.setStrokeWidth(1);
@@ -117,7 +119,8 @@ public class MessagePage {
 		VBox inputRectangle = new VBox();
 		inputRectangle.getChildren().add(inputRect);
 		inputRectangle.setAlignment(Pos.CENTER);
-		inputRectangle.setPadding(new Insets(0,0,50,0));
+		inputRectangle.setMaxHeight(460);
+		inputRectangle.setPadding(new Insets(110,0,50,0));
 		/**
 		 * CREATE INTRO TEXT ABOVE MESSAGE AREA
 		 */
@@ -187,7 +190,7 @@ public class MessagePage {
 		 */
 		Text errorMessage = new Text("Please enter some text before moving forward.");
 		errorMessage.setFont(Font.font("Veranda", 12));
-		errorMessage.setFill(Color.web("#FFFFFF"));
+		errorMessage.setFill(Color.web("#D4FFD7"));
 		HBox errorBox = new HBox();
 		errorBox.setMinWidth(300);
 		errorBox.getChildren().add(errorMessage);
@@ -199,7 +202,14 @@ public class MessagePage {
 		VBox allMessageContents = new VBox(10);
 		allMessageContents.getChildren().addAll(preMessageBox,messageHolderBox,buttonBox,
 				errorBox, messageListTextBox);
-		allMessageContents.setAlignment(Pos.BOTTOM_CENTER);
+		allMessageContents.setAlignment(Pos.CENTER);
+		/**
+		 * ADDING ALL ELEMENTS TO FINAL VBOX
+		 */
+		VBox wholePageVBox = new VBox(10);
+		wholePageVBox.getChildren().addAll(titleBox,introTextBox,
+				allMessageContents);
+		wholePageVBox.setPadding(new Insets(0,0,0,0));
 		/**
 		 * CREATING COLUMNS OF MESSAGES
 		 */
@@ -212,14 +222,16 @@ public class MessagePage {
 		HBox messageColumnsBox = new HBox(100);
 		messageColumnsBox.getChildren().addAll(leftMessageColumn,centerMessageColumn,
 				rightMessageColumn);
-		messageColumnsBox.setAlignment(Pos.CENTER);
+		messageColumnsBox.setTranslateX(100);
+		messageColumnsBox.setTranslateY(350);
 		/**
-		 * ADDING ALL ELEMENTS TO FINAL VBOX
+		 * SETTING A BACK BUTTTON
 		 */
-		VBox wholePageVBox = new VBox(10);
-		wholePageVBox.getChildren().addAll(titleBox,introTextBox,inputRectangle,
-				allMessageContents, messageColumnsBox);
-		wholePageVBox.setPadding(new Insets(40,0,0,0));
+		Button back = new Button("Save");
+		back.setWrapText(true);
+		back.setMaxWidth(80);
+		HBox backButton = new HBox(back);
+		backButton.setAlignment(Pos.BOTTOM_CENTER);
 		/**
 		 * GIVING THE BUTTONS ACTION
 		 */
@@ -244,7 +256,7 @@ public class MessagePage {
 					currentColumn = 1;
 				}
 				user.setMsg(messageHolder.getText());
-				errorMessage.setFill(Color.web("#FFFFFF"));
+				errorMessage.setFill(Color.web("#D4FFD7"));
 				messageHolder.clear();
 			}
 			catch(NullPointerException e1) {
@@ -264,7 +276,7 @@ public class MessagePage {
 		/**
 		 * FINAL STAGE - ADDING ITEMS TO OVERALL BOXES AND SHOWING THE SCREEN
 		 */
-		rootNode.getChildren().add(wholePageVBox);
+		rootNode.getChildren().addAll(inputRectangle,messageColumnsBox,wholePageVBox);
 		mainStage.show();
 		return messageScene;
 	}
@@ -309,5 +321,4 @@ public class MessagePage {
 		currentNumber++;
 		return messageInfoBox;
 	}
-	
 }

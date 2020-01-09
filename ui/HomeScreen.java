@@ -211,7 +211,6 @@ public class HomeScreen {
 	    HBox totalInputBox = new HBox(30);
 	    totalInputBox.getChildren().addAll(labelBox,inputsVBox);
 	    totalInputBox.setAlignment(Pos.CENTER);
-	    
 	    /**
 		 * ADDING CONTINUE BUTTON
 		 */
@@ -240,9 +239,7 @@ public class HomeScreen {
 						||user.getStartDate() == null || user.getEndDate() == null || user.getGoal() == null
 						||user.getPhone().length() != 12 || !validPhoneNumber.matches("^-?\\d+$")						
 						) {
-
 					throw new NullPointerException();
-
 				}
 				// Add pass off to scene 2: message page.
 				MessagePage messagePage = new MessagePage();
