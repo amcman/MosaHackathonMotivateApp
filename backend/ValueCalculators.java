@@ -21,7 +21,6 @@ public class ValueCalculators {
 		return (int) TimeUnit.MILLISECONDS.toDays(durationInMilliSec); 
 	}
 	
-	//TO MODIFY by Helen
 	// Calculates the number of msgs needed/to be sent
 	public int getNumOfMsgs(String fS) {
 		
