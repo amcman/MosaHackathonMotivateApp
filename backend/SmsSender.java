@@ -11,11 +11,9 @@ import com.twilio.type.PhoneNumber;
 public class SmsSender {
 	
 	User user; 
-	ValueCalculators calc;
 	
-	public SmsSender() {
-		this.user = new User();
-		this.calc = new ValueCalculators(); 
+	public SmsSender(User u) {
+		this.user = u; 
 	}
 	
 	ArrayList<String> motiMsgs = user.getMsg();

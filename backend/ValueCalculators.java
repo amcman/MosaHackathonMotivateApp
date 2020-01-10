@@ -7,27 +7,25 @@ public class ValueCalculators {
 
 	User user; 
 	
-	public ValueCalculators() {
-		this.user = new User(); 
+	public ValueCalculators(User u) {
+		this.user = u; 
 	}
 	
 	Date startDate = user.getStartDate(); 
 	Date endDate = user.getEndDate();
-	
-	//TO MODIFY
-	String frequency = user.getdailyFreq();
+	String frequencyStr = user.getdailyFreq();
 	
 	// Calculates the number of days the goal will last 
-	public long getNumOfDays() {
+	public int getNumOfDays() {
 		long durationInMilliSec = endDate.getTime() - startDate.getTime();
-		return TimeUnit.MILLISECONDS.toDays(durationInMilliSec); 
+		return (int) TimeUnit.MILLISECONDS.toDays(durationInMilliSec); 
 	}
 	
-	//TO MODIFY
+	//TO MODIFY by Helen
 	// Calculates the number of msgs needed/to be sent
 	public int getNumOfMsgs() {
 		
-		return 0; 
+		return getNumOfDays() * 1 ; 
 	}
 	
 	
