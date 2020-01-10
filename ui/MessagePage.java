@@ -46,6 +46,11 @@ public class MessagePage {
 	static int currentColumn = 1;
 	//Set message number in display below textarea
 	static int currentNumber = 1;
+	//Idle button formatting
+	private String IDLE = "-fx-background-radius: 15; -fx-background-color: #FFEDEA;"
+  			+ " -fx-border-color: #FF826E; -fx-border-radius:15";
+	private String HOVERED = "-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
+  			+ " -fx-border-color: #FF826E; -fx-border-radius:15";
 	/**
 	 * This method handles displaying the message entry page of the program.
 	 * This page will be responsible for collecting motivational messages from 
@@ -194,16 +199,52 @@ public class MessagePage {
 		/**
 		 * SAVE AND SUBMIT BUTTON BOXES
 		 */
-		Button saveAndContinue = new Button("Save");
+		// Adding save image
+		Image save = null;
+		try {
+			save = new Image(new FileInputStream("Restart.png"), 800, 800, true, true);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ImageView saveIcon = new ImageView(save);
+		saveIcon.setFitHeight(10);
+		saveIcon.setFitWidth(10);
+		saveIcon.setPreserveRatio(true);
+		Button saveAndContinue = new Button("Save",saveIcon);
+		saveAndContinue.setContentDisplay(ContentDisplay.RIGHT);
 		saveAndContinue.setWrapText(true);
 		saveAndContinue.setMaxWidth(80);
-		saveAndContinue.setStyle("-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
-	  			+ " -fx-border-color: #FF826E; -fx-border-radius:15");
-		Button submit = new Button("Submit");
-		submit.setStyle("-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
-	  			+ " -fx-border-color: #FF826E; -fx-border-radius:15");
+		saveAndContinue.setStyle(IDLE);
+		saveAndContinue.setOnMouseEntered(e -> {
+			saveAndContinue.setStyle(HOVERED);
+		});
+		saveAndContinue.setOnMouseExited(e -> {
+			saveAndContinue.setStyle(IDLE);
+		});
+		// Adding save image
+		Image submitImg = null;
+		try {
+			submitImg = new Image(new FileInputStream("submitIcon.png"), 800, 800, true, true);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ImageView submitIcon = new ImageView(submitImg);
+		submitIcon.setFitHeight(10);
+		submitIcon.setFitWidth(10);
+		submitIcon.setPreserveRatio(true);
+		Button submit = new Button("Submit",submitIcon);
+		submit.setContentDisplay(ContentDisplay.RIGHT);
+		submit.setStyle(IDLE);
+		submit.setOnMouseEntered(e -> {
+			submit.setStyle(HOVERED);
+		});
+		submit.setOnMouseExited(e -> {
+			submit.setStyle(IDLE);
+		});
 		HBox buttonBox = new HBox(15);
-		buttonBox.getChildren().addAll(saveAndContinue,submit);
+		buttonBox.getChildren().addAll(saveAndContinue, submit);
 		buttonBox.setAlignment(Pos.CENTER);
 		/**
 		 * SET INTRO TEXT ABOVE PAST MESSAGE COLUMNS

@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -67,13 +68,20 @@ import javafx.event.ActionEvent;
 public class ThankYouPopUp {
 	//Stage width
 	private int stageX = 550;
-	//Stage height
+	// Stage height
 	private int stageY = 250;
-	//Instantiate empty User Class
+	// Idle button formatting
+	private String IDLE = "-fx-background-radius: 15; -fx-background-color: #FFEDEA;"
+			+ " -fx-border-color: #FF826E; -fx-border-radius:15";
+	// Hovered button formatting
+	private String HOVERED = "-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
+			+ " -fx-border-color: #FF826E; -fx-border-radius:15";
+
 	/**
-	 * This class controls creation of the main stage for the program, as well
-	 * as creation of the home screen scene. It provides information on the app
-	 * as well as a brief form for users to fill out before using it.
+	 * This class controls creation of the main stage for the program, as well as
+	 * creation of the home screen scene. It provides information on the app as well
+	 * as a brief form for users to fill out before using it.
+	 * 
 	 * @return This method returns a scene for the home screen (type Scene).
 	 */
 	public Scene start(User user) {
@@ -136,12 +144,29 @@ public class ThankYouPopUp {
 		/**
 		 * EXIT BUTTON
 		 */
-		Button exitAppButton = new Button("  Exit  ");
+		Image exit = null;
+		try {
+			exit = new Image(new FileInputStream("exit.png"), 800, 800, true, true);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ImageView exitIcon = new ImageView(exit);
+		exitIcon.setFitHeight(15);
+		exitIcon.setFitWidth(15);
+		exitIcon.setPreserveRatio(true);
+		Button exitAppButton = new Button("Exit",exitIcon);
+		exitAppButton.setContentDisplay(ContentDisplay.RIGHT);
 		exitAppButton.setAlignment(Pos.CENTER);
-		exitAppButton.setStyle("-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
-	  			+ " -fx-border-color: #FF826E; -fx-border-radius:15");
+		exitAppButton.setStyle(IDLE);
 		exitAppButton.setOnAction(e -> {
 			mainStage.close();
+		});
+		exitAppButton.setOnMouseEntered(e -> {
+			exitAppButton.setStyle(HOVERED);
+		});
+		exitAppButton.setOnMouseExited(e -> {
+			exitAppButton.setStyle(IDLE);
 		});
 		/**
 		 * FINAL PAGE EDITS - ADD CHILDREN TO ROOTNODE AND SHOW PAGE/RETURN SCENE

@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -73,6 +74,12 @@ public class HomeScreen {
 	private int stageY = 1000;
 	//Instantiate empty User Class
 	private User user = new User();
+	//Idle button formatting
+	private String IDLE = "-fx-background-radius: 15; -fx-background-color: #FFEDEA;"
+  			+ " -fx-border-color: #FF826E; -fx-border-radius:15";
+	//Hovered button formatting
+	private String HOVERED = "-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
+  			+ " -fx-border-color: #FF826E; -fx-border-radius:15";
 	/**
 	 * This class controls creation of the main stage for the program, as well
 	 * as creation of the home screen scene. It provides information on the app
@@ -235,9 +242,26 @@ public class HomeScreen {
 		 * ADDING CONTINUE BUTTON
 		 */
 	    //Create button 
-	  	Button continueButton = new Button("Continue");
-	  	continueButton.setStyle("-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
-	  			+ " -fx-border-color: #FF826E; -fx-border-radius:15");
+		Image play = null;
+		try {
+			play = new Image(new FileInputStream("forward.png"), 800, 800, true, true);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ImageView playView = new ImageView(play);
+		playView.setFitHeight(10);
+		playView.setFitWidth(10);
+		playView.setPreserveRatio(true);
+	  	Button continueButton = new Button("Continue",playView);
+	  	continueButton.setContentDisplay(ContentDisplay.RIGHT);
+	  	continueButton.setStyle(IDLE);
+	  	continueButton.setOnMouseEntered(e -> {
+	  		continueButton.setStyle(HOVERED);
+	  	});
+	  	continueButton.setOnMouseExited(e -> {
+	  		continueButton.setStyle(IDLE);
+	  	});
 	    HBox buttonHolder = new HBox(continueButton);
 	    buttonHolder.setAlignment(Pos.CENTER);
 	    VBox allUserInputContent = new VBox(40);
