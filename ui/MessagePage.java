@@ -45,8 +45,6 @@ public class MessagePage {
 	static int currentColumn = 1;
 	//Set message number in display below textarea
 	static int currentNumber = 1;
-	//Set static padding
-	static int bottomPadding = 200;
 	/**
 	 * This method handles displaying the message entry page of the program.
 	 * This page will be responsible for collecting motivational messages from 
@@ -68,6 +66,7 @@ public class MessagePage {
 		ScrollPane scroll = new ScrollPane(rootNode);
 		//make that node fill entire width
 		scroll.setFitToWidth(true);
+		scroll.setMinHeight(1000);
 		//set background white
 		scroll.setStyle("-fx-background: white");
 		//Create Scene and link it with ScrollPane can have only one node
@@ -136,9 +135,11 @@ public class MessagePage {
 		//Putting input box within a child vbox
 		VBox inputRectangle = new VBox();
 		inputRectangle.getChildren().add(inputRect);
-		inputRectangle.setAlignment(Pos.CENTER);
+		//inputRectangle.setTranslateX(100);
+		//inputRectangle.setTranslateY(200);
+		inputRectangle.setAlignment(Pos.TOP_CENTER);
 		inputRectangle.setMaxHeight(460);
-		inputRectangle.setPadding(new Insets(120,0,50,0));
+		inputRectangle.setPadding(new Insets(0,0,320,0));
 		/**
 		 * CREATE INTRO TEXT ABOVE MESSAGE AREA
 		 */
@@ -220,20 +221,6 @@ public class MessagePage {
 		errorBox.setAlignment(Pos.CENTER);
 		errorBox.setMaxHeight(20);
 		/**
-		 * ADDING ALL INTERACTIVE ELEMENTS TO A VBOX
-		 */
-		VBox allMessageContents = new VBox(10);
-		allMessageContents.getChildren().addAll(preMessageBox,messageHolderBox,buttonBox,
-				errorBox, messageListTextBox);
-		allMessageContents.setAlignment(Pos.CENTER);
-		/**
-		 * ADDING ALL ELEMENTS TO FINAL VBOX
-		 */
-		VBox wholePageVBox = new VBox();
-		wholePageVBox.getChildren().addAll(titleBox,introTextBox,
-				allMessageContents);
-		wholePageVBox.setPadding(new Insets(0,0,bottomPadding + 200,0));
-		/**
 		 * CREATING COLUMNS OF MESSAGES
 		 */
 		VBox leftMessageColumn = new VBox(5);
@@ -250,17 +237,24 @@ public class MessagePage {
 		//messageColumnsBox.setAlignment(Pos.BASELINE_CENTER);
 		messageColumnsBox.setMinHeight(100);
 		messageColumnsBox.setMaxWidth(400);
-		messageColumnsBox.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), null, null)));
+		messageColumnsBox.setPadding(new Insets(30,0,0,0));
+		/**
+		 * ADDING ALL INTERACTIVE ELEMENTS TO A VBOX
+		 */
+		VBox allMessageContents = new VBox(10);
+		allMessageContents.getChildren().addAll(preMessageBox,messageHolderBox,buttonBox,
+				errorBox, messageListTextBox);
+		allMessageContents.setAlignment(Pos.CENTER);
+		/**
+		 * ADDING ALL ELEMENTS TO FINAL VBOX
+		 */
+		VBox wholePageVBox = new VBox();
+		wholePageVBox.getChildren().addAll(titleBox,introTextBox,
+				allMessageContents);
+		wholePageVBox.setPadding(new Insets(0,0,400,0));
+		//messageColumnsBox.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), null, null)));
 		//messageColumnsBox.setPadding(new Insets(40,0,10,0));
 		//wholePageVBox.setPadding(new Insets(0,0,bottomPadding,0));
-		/**
-		 * SETTING A BACK BUTTTON
-		 */
-		Button back = new Button("Save");
-		back.setWrapText(true);
-		back.setMaxWidth(80);
-		HBox backButton = new HBox(back);
-		backButton.setAlignment(Pos.BOTTOM_CENTER);
 		/**
 		 * GIVING THE BUTTONS ACTION
 		 */
@@ -308,7 +302,7 @@ public class MessagePage {
 		/**
 		 * FINAL STAGE - ADDING ITEMS TO OVERALL BOXES AND SHOWING THE SCREEN
 		 */
-		rootNode.getChildren().addAll(inputRectangle,messageColumnsBox,wholePageVBox);
+		rootNode.getChildren().addAll(inputRectangle,wholePageVBox,messageColumnsBox);
 		mainStage.show();
 		return messageScene;
 	}
@@ -353,6 +347,4 @@ public class MessagePage {
 		currentNumber++;
 		return messageInfoBox;
 	}
-	
-	
 }
