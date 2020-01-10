@@ -31,8 +31,10 @@ public class ValueCalculators {
 			break;
 		case "Every other day":
 			frequencyNum = 0.5;
+			break;
 		case "Once a week":
 			frequencyNum = (1/7)*1.0;
+			break;
 		}
 			
 		return (int) (getNumOfDays() * frequencyNum); 
