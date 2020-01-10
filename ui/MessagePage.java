@@ -35,6 +35,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class MessagePage {
 	//Stage width
@@ -96,7 +97,7 @@ public class MessagePage {
 		textMessageIcon.setPreserveRatio(true);
 		VBox titleBox = new VBox(3);
 		titleBox.setAlignment(Pos.TOP_CENTER);
-		titleBox.setPadding(new Insets(0,0,60,0));
+		titleBox.setPadding(new Insets(0,0,40,0));
 		titleBox.getChildren().addAll(textMessageIcon,title);
 		/*
 		 * ADDING INTRODUCTION TEXT
@@ -126,7 +127,7 @@ public class MessagePage {
 		/**
 		 * CREATING COLOR BOX
 		 */
-		Rectangle inputRect = new Rectangle(520, 430);
+		Rectangle inputRect = new Rectangle(540, 450);
 		inputRect.setFill(Color.rgb(212, 255, 215));
 		inputRect.setStroke(Color.rgb(98, 245, 108));
 		inputRect.setStrokeWidth(1);
@@ -138,8 +139,8 @@ public class MessagePage {
 		//inputRectangle.setTranslateX(100);
 		//inputRectangle.setTranslateY(200);
 		inputRectangle.setAlignment(Pos.TOP_CENTER);
-		inputRectangle.setMaxHeight(460);
-		inputRectangle.setPadding(new Insets(0,0,320,0));
+		inputRectangle.setMaxHeight(450);
+		inputRectangle.setPadding(new Insets(0,0,340,0));
 		/**
 		 * CREATE INTRO TEXT ABOVE MESSAGE AREA
 		 */
@@ -151,7 +152,7 @@ public class MessagePage {
 		//Adding info image
 		Image image = null;
 		try {
-			image = new Image(new FileInputStream("info.png"), 800, 800, true, true);
+			image = new Image(new FileInputStream("src/info.png"), 800, 800, true, true);
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -162,6 +163,13 @@ public class MessagePage {
 		infoView.setPreserveRatio(true);
 		Button infoButton = new Button("",infoView);
 		infoButton.setStyle("-fx-background-color: transparent");
+		Tooltip inspiration = new Tooltip(messageInspiration());
+		inspiration.setWrapText(true);
+		inspiration.setMaxWidth(250);
+		inspiration.setTextAlignment(TextAlignment.CENTER);
+		inspiration.setShowDelay(Duration.seconds(0.5));
+		inspiration.setShowDuration(Duration.seconds(500));
+		infoButton.setTooltip(inspiration);
 		HBox preMessageBox = new HBox(5);
 		preMessageBox.getChildren().addAll(preMessageText,infoButton);
 		preMessageBox.setAlignment(Pos.BOTTOM_CENTER);
@@ -242,7 +250,7 @@ public class MessagePage {
 		 * ADDING ALL INTERACTIVE ELEMENTS TO A VBOX
 		 */
 		VBox allMessageContents = new VBox(10);
-		allMessageContents.getChildren().addAll(preMessageBox,messageHolderBox,buttonBox,
+		allMessageContents.getChildren().addAll(preMessageBox,textIconBox,messageHolderBox,buttonBox,
 				errorBox, messageListTextBox);
 		allMessageContents.setAlignment(Pos.CENTER);
 		/**
@@ -310,8 +318,17 @@ public class MessagePage {
 	 * Handles displaying the popup when the info button is clicked next to the
 	 * motivation text field header.
 	 */
-	private void messageInspiration() {
-	   System.out.println("Worked");
+	private String messageInspiration() {
+
+		String inspiration = new String(
+				"Think about the kinds of messages that will break you out of a rut of laziness. "
+				+ "For example, if your goal is to get fit for a 10k you have coming up, you might say to yourself...\n"
+				+ "\n"
+				+ "\"Think about that 10k you have this summer. You want to beat your buddies don't you? Get training.\"\n"
+				+ "\n"
+				+ "You could also paste in a link to an inspirational video or iamge." 
+				);
+		return inspiration;
 	}
 	/**
 	 * Create a Text object that takes on the value of the message inputted.
@@ -338,7 +355,8 @@ public class MessagePage {
 		Button messageButton = new Button("", messageIcon);
 		messageButton.setStyle("-fx-background-color: transparent");
 		Tooltip buttonTool = new Tooltip(messageToDisplay);
-		buttonTool.prefWidth(150);
+		buttonTool.setMaxWidth(150);
+		buttonTool.setTextAlignment(TextAlignment.CENTER);
 		buttonTool.setWrapText(true);
 		messageButton.setTooltip(buttonTool);
 		messageButton.setAlignment(Pos.TOP_CENTER);
