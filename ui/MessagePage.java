@@ -45,6 +45,8 @@ public class MessagePage {
 	static int currentColumn = 1;
 	//Set message number in display below textarea
 	static int currentNumber = 1;
+	//Set static padding
+	static int bottomPadding = 200;
 	/**
 	 * This method handles displaying the message entry page of the program.
 	 * This page will be responsible for collecting motivational messages from 
@@ -77,7 +79,8 @@ public class MessagePage {
 		// Create and format a title
 		Text title = new Text("Motivate");
 		title.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 30));
-		title.setFill(Color.web("#FF826E"));		/**
+		title.setFill(Color.web("#FF826E"));		
+		/**
 		 * ADDING MESSAGE ICON
 		 */
 		// Adding info image
@@ -193,7 +196,7 @@ public class MessagePage {
 		 * SET INTRO TEXT ABOVE PAST MESSAGE COLUMNS
 		 */
 		Text messageListText = new Text(
-				"Hover over the message icon(s) below to see one of your previous messages. "
+				"Hover over the message icon(s) to see one of your previous messages. "
 				+ "If you want to see some messages more often than others, just re-enter "
 				+ "the message, and it will increase the frequency at which you receive "
 				+ "that message."
@@ -229,21 +232,27 @@ public class MessagePage {
 		VBox wholePageVBox = new VBox();
 		wholePageVBox.getChildren().addAll(titleBox,introTextBox,
 				allMessageContents);
-		wholePageVBox.setPadding(new Insets(0,0,0,0));
+		wholePageVBox.setPadding(new Insets(0,0,bottomPadding + 200,0));
 		/**
 		 * CREATING COLUMNS OF MESSAGES
 		 */
 		VBox leftMessageColumn = new VBox(5);
-		leftMessageColumn.setAlignment(Pos.CENTER_LEFT);
+		leftMessageColumn.setAlignment(Pos.TOP_LEFT);
 		VBox centerMessageColumn = new VBox(5);
-		centerMessageColumn.setAlignment(Pos.CENTER);
+		centerMessageColumn.setAlignment(Pos.TOP_CENTER);
 		VBox rightMessageColumn = new VBox(5);
-		rightMessageColumn.setAlignment(Pos.CENTER_RIGHT);
+		rightMessageColumn.setAlignment(Pos.TOP_RIGHT);
 		HBox messageColumnsBox = new HBox(100);
 		messageColumnsBox.getChildren().addAll(leftMessageColumn,centerMessageColumn,
 				rightMessageColumn);
-		messageColumnsBox.setTranslateX(100);
-		messageColumnsBox.setTranslateY(350);
+		messageColumnsBox.setTranslateX(0);
+		messageColumnsBox.setTranslateY(650);
+		//messageColumnsBox.setAlignment(Pos.BASELINE_CENTER);
+		messageColumnsBox.setMinHeight(100);
+		messageColumnsBox.setMaxWidth(400);
+		messageColumnsBox.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), null, null)));
+		//messageColumnsBox.setPadding(new Insets(40,0,10,0));
+		//wholePageVBox.setPadding(new Insets(0,0,bottomPadding,0));
 		/**
 		 * SETTING A BACK BUTTTON
 		 */
@@ -285,9 +294,12 @@ public class MessagePage {
 		});
 		submit.setOnAction(e -> {
 			try {
-				if(messageHolder.getText().equals("")) {
+				if(user.getMsg().size() == 0) {
 					throw new NullPointerException();
 				}
+				mainStage.close();
+				ThankYouPopUp thankYouPage = new ThankYouPopUp();
+				thankYouPage.start(user);
 			}
 			catch(NullPointerException e2) {
 				errorMessage.setFill(Color.web("#FF1000"));
@@ -341,4 +353,6 @@ public class MessagePage {
 		currentNumber++;
 		return messageInfoBox;
 	}
+	
+	
 }
