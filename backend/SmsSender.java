@@ -11,13 +11,13 @@ import com.twilio.type.PhoneNumber;
 public class SmsSender {
 	
 	User user; 
+	ArrayList<String> motiMsgs;
 	
 	public SmsSender(User u) {
 		this.user = u; 
+		this.motiMsgs = user.getMsg();
 	}
-	
-	ArrayList<String> motiMsgs = user.getMsg();
-	
+		
 	// Find your Account Sid and Auth Token at twilio.com/console
     public static final String ACCOUNT_SID =
             "AC0adc56719ee8405ae27948c292d0456a";
