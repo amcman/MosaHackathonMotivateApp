@@ -197,7 +197,11 @@ public class MessagePage {
 		Button saveAndContinue = new Button("Save");
 		saveAndContinue.setWrapText(true);
 		saveAndContinue.setMaxWidth(80);
+		saveAndContinue.setStyle("-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
+	  			+ " -fx-border-color: #FF826E; -fx-border-radius:15");
 		Button submit = new Button("Submit");
+		submit.setStyle("-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
+	  			+ " -fx-border-color: #FF826E; -fx-border-radius:15");
 		HBox buttonBox = new HBox(15);
 		buttonBox.getChildren().addAll(saveAndContinue,submit);
 		buttonBox.setAlignment(Pos.CENTER);

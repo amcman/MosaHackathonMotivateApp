@@ -94,6 +94,23 @@ public class ThankYouPopUp {
 		Scene thankYouScene = new Scene(scroll, stageX, stageY);
 		mainStage.setScene(thankYouScene);
 		mainStage.setTitle("Motivate");
+		/**
+		 * ADDING ICON
+		 */
+		Image checkMark = null;
+		try {
+			checkMark = new Image(new FileInputStream("completeIcon.png"), 800, 800, true, true);
+		} catch (FileNotFoundException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		ImageView messageIcon = new ImageView(checkMark);
+		messageIcon.setFitHeight(30);
+		messageIcon.setFitWidth(30);
+		messageIcon.setPreserveRatio(true);
+		HBox imageBox = new HBox(messageIcon);
+		imageBox.setPadding(new Insets(20,0,0,0));
+		imageBox.setAlignment(Pos.TOP_CENTER);
 		// Create and format a title
 		Text title = new Text("Thank You!");
 		title.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 30));
@@ -101,7 +118,7 @@ public class ThankYouPopUp {
 		// Create an HBox for the title
 		HBox titleBox = new HBox(title);
 		titleBox.setAlignment(Pos.TOP_CENTER);
-		titleBox.setPadding(new Insets(20, 0, 30, 0));
+		titleBox.setPadding(new Insets(0, 0, 10, 0));
 		/**
 		 * CREATING THE TEXT BOX
 		 */
@@ -119,8 +136,10 @@ public class ThankYouPopUp {
 		/**
 		 * EXIT BUTTON
 		 */
-		Button exitAppButton = new Button("Exit");
+		Button exitAppButton = new Button("  Exit  ");
 		exitAppButton.setAlignment(Pos.CENTER);
+		exitAppButton.setStyle("-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
+	  			+ " -fx-border-color: #FF826E; -fx-border-radius:15");
 		exitAppButton.setOnAction(e -> {
 			mainStage.close();
 		});
@@ -128,9 +147,9 @@ public class ThankYouPopUp {
 		 * FINAL PAGE EDITS - ADD CHILDREN TO ROOTNODE AND SHOW PAGE/RETURN SCENE
 		 */
 		// Add all children to master VBox
-		VBox allContent = new VBox(10);
+		VBox allContent = new VBox(20);
 		allContent.setAlignment(Pos.CENTER);
-		allContent.getChildren().addAll(titleBox,closeOutText,exitAppButton);
+		allContent.getChildren().addAll(imageBox,titleBox,closeOutText,exitAppButton);
 		rootNode.getChildren().addAll(allContent);
 		// Show the stage
 		mainStage.show();

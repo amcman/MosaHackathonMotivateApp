@@ -152,7 +152,8 @@ public class HomeScreen {
 				+ "often as you'd like until you reach your goal. That way, messages "
 				+ "stay fresh,  motivation doesn't die, and you achieve your goal. "
 				+ "It's that simple. Please note though, this program only currently serves "
-				+ "user with US cell phone numbers. \n" + 
+				+ "user with US cell phone numbers. It also currently only supports goals that are "
+				+ "at least one week long. \n" + 
 				"\n" + 
 				"Simply fill out the information below and click continue. "
 				);
@@ -235,6 +236,8 @@ public class HomeScreen {
 		 */
 	    //Create button 
 	  	Button continueButton = new Button("Continue");
+	  	continueButton.setStyle("-fx-background-radius: 15; -fx-background-color: #FFBEB4;"
+	  			+ " -fx-border-color: #FF826E; -fx-border-radius:15");
 	    HBox buttonHolder = new HBox(continueButton);
 	    buttonHolder.setAlignment(Pos.CENTER);
 	    VBox allUserInputContent = new VBox(40);
