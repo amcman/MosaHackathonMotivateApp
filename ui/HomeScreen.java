@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -48,6 +49,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
@@ -178,9 +180,24 @@ public class HomeScreen {
 		DatePicker startDatePicker = new DatePicker();
 		//Date picking field for goal end date
 		DatePicker endDatePicker = new DatePicker();
-		//Phone number field
+		//Set range for date pickers
+		startDatePicker.setDayCellFactory(picker -> new DateCell() {
+        @Override
+        public void updateItem(LocalDate date, boolean empty) {
+            super.updateItem(date, empty);
+            setDisable(empty || date.compareTo(LocalDate.now()) < 0);
+        }
+        });
+		endDatePicker.setDayCellFactory(picker -> new DateCell() {
+	    @Override
+	    public void updateItem(LocalDate date, boolean empty) {
+	        super.updateItem(date, empty);
+	        setDisable(empty || date.compareTo(startDatePicker.getValue().plusDays(7)) < 0);
+	    }
+	    });
+		// Phone number field
 		TextField phoneNumberInput = new TextField();
-		//Add all elements to a VBox
+		// Add all elements to a VBox
 	    VBox inputsVBox = new VBox(40);
 	    inputsVBox.getChildren().addAll(nameInput,frequencyComboBox,goalInput,
 	    		startDatePicker, endDatePicker, phoneNumberInput);
