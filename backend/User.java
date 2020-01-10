@@ -53,6 +53,11 @@ public class User {
 		this.messages.add(s); 
 	}
 	
+	//Optional: will wipe out current arraylist of messages. 
+	public void deleteMsg(ArrayList<String> m) {
+		this.messages = new ArrayList<String> (); 
+	}
+	
 	public Date getStartDate() {
 		return this.startDate; 
 	}

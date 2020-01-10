@@ -23,9 +23,26 @@ public class ValueCalculators {
 	
 	//TO MODIFY by Helen
 	// Calculates the number of msgs needed/to be sent
-	public int getNumOfMsgs() {
+	public int getNumOfMsgs(String fS) {
 		
-		return getNumOfDays() * 1 ; 
+		//nF is numerical daily frequency 
+		double nF=0;
+		
+		switch(fS) {
+		case "Twice a day":
+			nF = 2;
+			break;
+		case "Once a day":
+			nF = 1;
+			break;
+		case "Every other day":
+			nF = 0.5;
+		case "Once a week":
+			nF = (1/7)*1.0;
+		}
+		
+		
+		return (int) (getNumOfDays() * nF); 
 	}
 	
 	
