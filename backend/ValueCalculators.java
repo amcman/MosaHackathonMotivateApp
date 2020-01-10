@@ -1,6 +1,5 @@
 package backend;
 
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class ValueCalculators {
@@ -10,38 +9,35 @@ public class ValueCalculators {
 	public ValueCalculators(User u) {
 		this.user = u; 
 	}
-	
-	Date startDate = user.getStartDate(); 
-	Date endDate = user.getEndDate();
-	String frequencyStr = user.getdailyFreq();
-	
+		
 	// Calculates the number of days the goal will last 
 	public int getNumOfDays() {
-		long durationInMilliSec = endDate.getTime() - startDate.getTime();
+		long durationInMilliSec = user.getEndDate().getTime() - user.getStartDate().getTime();
 		return (int) TimeUnit.MILLISECONDS.toDays(durationInMilliSec); 
 	}
 	
 	// Calculates the number of msgs needed/to be sent
-	public int getNumOfMsgs(String fS) {
+	public int getNumOfMsgs() {
 		
 		//nF is numerical daily frequency 
-		double nF=0;
+		double frequencyNum=0;
 		
-		switch(fS) {
+		switch(user.getdailyFreq()) {
 		case "Twice a day":
-			nF = 2;
+			frequencyNum = 2;
 			break;
 		case "Once a day":
-			nF = 1;
+			frequencyNum = 1;
 			break;
 		case "Every other day":
-			nF = 0.5;
+			frequencyNum = 0.5;
+			break;
 		case "Once a week":
-			nF = (1/7)*1.0;
+			frequencyNum = (1/7)*1.0;
+			break;
 		}
-		
-		
-		return (int) (getNumOfDays() * nF); 
+			
+		return (int) (getNumOfDays() * frequencyNum); 
 	}
 	
 	
