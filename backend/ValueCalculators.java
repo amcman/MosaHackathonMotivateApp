@@ -5,11 +5,9 @@ import java.util.concurrent.TimeUnit;
 public class ValueCalculators {
 
 	User user; 
-	String frequencyStr; 
 	
 	public ValueCalculators(User u) {
 		this.user = u; 
-		this.frequencyStr = user.getdailyFreq();
 	}
 		
 	// Calculates the number of days the goal will last 
@@ -24,7 +22,7 @@ public class ValueCalculators {
 		//nF is numerical daily frequency 
 		double frequencyNum=0;
 		
-		switch(frequencyStr) {
+		switch(user.getdailyFreq()) {
 		case "Twice a day":
 			frequencyNum = 2;
 			break;
