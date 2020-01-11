@@ -33,7 +33,7 @@ public class ValueCalculators {
 			frequencyNum = 0.5;
 			break;
 		case "Once a week":
-			frequencyNum = (1.0/7)*1.0;
+			frequencyNum = (1.0/7.0);
 			break;
 		}
 			
