@@ -1,6 +1,9 @@
 package runner;
 import java.io.FileInputStream;
 
+import backend.SmsSender;
+import backend.User;
+import backend.ValueCalculators;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,19 +27,37 @@ import ui.HomeScreen;
 public class MotivationProgram extends Application {
 
 
-  @Override
+  //@Override
   /**
    * This method provides a main stage for the application
    * and allows the alternation between pages on the same stage.
    * It handles the process flow of the application.
    */
+  
+  User user; 
+  SmsSender smsSender; 
+  ValueCalculators valueCalc; 
+  
+  public MotivationProgram(User user, SmsSender smsSender, ValueCalculators valueCalc) {
+	  this.user = user; 
+	  this.smsSender = smsSender; 
+	  this.valueCalc = valueCalc; 
+  }
+  
   public void start(Stage primaryStage) {
 
         //create user and resultsViewer object
         HomeScreen introPage = new HomeScreen();
         introPage.start();
         //Thank you pop up
-        //Loop for timed message deployment
+        
+        // Send motivational messages one by one at a random daytime 
+        for (int i = 0; i < valueCalc.getNumOfMsgs(); i++) {
+        	
+        }
+        
+        
+        
 
     }
 }
