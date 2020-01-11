@@ -20,9 +20,9 @@ public class SmsSender {
 		
 	// Find your Account Sid and Auth Token at twilio.com/console
     public static final String ACCOUNT_SID =
-            "AC0adc56719ee8405ae27948c292d0456a";
+            "";
     public static final String AUTH_TOKEN =
-            "469722a6cbeb5a8c44d5917e4ef87fa4";
+            "";
 
     // Text the user a motivational message
     public void sendSms() {
