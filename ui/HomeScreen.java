@@ -166,6 +166,23 @@ public class HomeScreen {
 				);
 		introductionText.setWrappingWidth(450);
 		introductionText.setTextAlignment(TextAlignment.CENTER);
+		Image info = null;
+		try {
+			info = new Image(new FileInputStream("info.png"), 800, 800, true, true);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		ImageView infoView = new ImageView(info);
+		infoView.setFitHeight(15);
+		infoView.setFitWidth(15);
+		infoView.setPreserveRatio(true);
+		Tooltip infoTool = new Tooltip(tooltipInfo());
+		infoTool.setTextAlignment(TextAlignment.CENTER);
+		infoTool.setWrapText(true);
+		Button infoButton = new Button("",infoView);
+		infoButton.setTooltip(infoTool);
+		infoButton.setStyle("-fx-background-color: transparent;");
 		HBox textBox = new HBox(introductionText);
 		textBox.setAlignment(Pos.TOP_CENTER);
 		textBox.setPadding(new Insets(230,0,0,0));
@@ -220,7 +237,9 @@ public class HomeScreen {
 	    Label frequencyOfMessagesLabel = new Label("Frequency of Messages");
 	    frequencyOfMessagesLabel.setTextAlignment(TextAlignment.CENTER);
 	    Label goalLabel = new Label("Your Goal");
-	    goalLabel.setTextAlignment(TextAlignment.CENTER);
+	    HBox goalBox = new HBox(5);
+	    goalBox.getChildren().addAll(goalLabel,infoButton);
+	    goalBox.setAlignment(Pos.CENTER_RIGHT);
 	    Label goalStartDate = new Label("Goal Start Date \n (Format: mm/dd/yyyy)");
 	    goalStartDate.setTextAlignment(TextAlignment.RIGHT);
 	    Label goalEndDate = new Label("Goal End Date \n (Format: mm/dd/yyyy)");
@@ -229,7 +248,7 @@ public class HomeScreen {
 	    phoneNumberLabel.setTextAlignment(TextAlignment.RIGHT);
 	    VBox labelBox = new VBox(40);
 	    labelBox.getChildren().addAll(nameLabel,frequencyOfMessagesLabel,
-	    		goalLabel, goalStartDate, goalEndDate,phoneNumberLabel);
+	    		goalBox, goalStartDate, goalEndDate,phoneNumberLabel);
 	    labelBox.setAlignment(Pos.CENTER_RIGHT);
 	    labelBox.setPadding(new Insets(308,0,0,0));
 	    /**
@@ -312,4 +331,21 @@ public class HomeScreen {
 		mainStage.show();
 		return homeScene;
 	}
+	
+	/**
+	 * Provides the text for the display on the info icon hover.
+	 * @return Returns a String value to go into the tooltip.
+	 */
+	public String tooltipInfo() {
+		String info = new String(
+				"When you input your goal, try to focus on something specific. \n"
+				+ "Instead of saying somethign like \"get fit\", try something like \n"
+				+ "\"Get fit for Spring Break in two months.\". Having a more specific \n"
+				+ "goal will make it easier for you to write more specific inspirational \n"
+				+ "messages that will get to the core of what you want to achieve and then \n"
+				+ "push you there."
+				);
+		return info;
+	}
+	
 }
