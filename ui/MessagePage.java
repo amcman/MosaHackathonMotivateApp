@@ -172,8 +172,8 @@ public class MessagePage {
 		inspiration.setWrapText(true);
 		inspiration.setMaxWidth(250);
 		inspiration.setTextAlignment(TextAlignment.CENTER);
-		inspiration.setShowDelay(Duration.seconds(0.5));
-		inspiration.setShowDuration(Duration.seconds(500));
+		//inspiration.setShowDelay(Duration.seconds(0.5));
+		//inspiration.setShowDuration(Duration.seconds(500));
 		infoButton.setTooltip(inspiration);
 		HBox preMessageBox = new HBox(5);
 		preMessageBox.getChildren().addAll(preMessageText,infoButton);

@@ -16,28 +16,33 @@ public class ValueCalculators {
 		return (int) TimeUnit.MILLISECONDS.toDays(durationInMilliSec); 
 	}
 	
-	// Calculates the number of msgs needed/to be sent
-	public int getNumOfMsgs() {
+	
+	public double getFreqNum() {
 		
-		//nF is numerical daily frequency 
-		double frequencyNum=0;
+		double freq=0; 
 		
 		switch(user.getdailyFreq()) {
 		case "Twice a day":
-			frequencyNum = 2;
+			freq = 2;
 			break;
 		case "Once a day":
-			frequencyNum = 1;
+			freq = 1;
 			break;
 		case "Every other day":
-			frequencyNum = 0.5;
+			freq = 0.5;
 			break;
 		case "Once a week":
-			frequencyNum = (1.0/7.0);
+			freq = (1.0/7.0);
 			break;
 		}
+		
+		return freq; 
+		
+	}
+	// Calculates the number of msgs needed/to be sent
+	public int getNumOfMsgs() {
 			
-		return (int) (getNumOfDays() * frequencyNum); 
+		return (int) (getNumOfDays() * getFreqNum()); 
 	}
 	
 	
