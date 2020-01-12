@@ -34,30 +34,12 @@ public class MotivationProgram extends Application {
    * It handles the process flow of the application.
    */
   
-  User user; 
-  SmsSender smsSender; 
-  ValueCalculators valueCalc; 
-  
-  public MotivationProgram(User user, SmsSender smsSender, ValueCalculators valueCalc) {
-	  this.user = user; 
-	  this.smsSender = smsSender; 
-	  this.valueCalc = valueCalc; 
-  }
-  
   public void start(Stage primaryStage) {
 
         //create user and resultsViewer object
         HomeScreen introPage = new HomeScreen();
         introPage.start();
-        //Thank you pop up
-        
-        // Send motivational messages one by one at a random daytime 
-        for (int i = 0; i < valueCalc.getNumOfMsgs(); i++) {
-        	
-        }
-        
-        
-        
+        //Thank you pop up    
 
     }
 }
