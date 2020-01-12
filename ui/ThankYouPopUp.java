@@ -163,7 +163,6 @@ public class ThankYouPopUp {
 		exitAppButton.setStyle(IDLE);
 		exitAppButton.setOnAction(e -> {
 			mainStage.close();
-			
 			// Send initial welcome message 
 			SmsSender smsSender = new SmsSender(user);
 			smsSender.sendWelcome();
