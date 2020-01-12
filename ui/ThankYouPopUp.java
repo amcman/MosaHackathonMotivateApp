@@ -161,6 +161,10 @@ public class ThankYouPopUp {
 		exitAppButton.setStyle(IDLE);
 		exitAppButton.setOnAction(e -> {
 			mainStage.close();
+			//ADD LOOPING FOR SENDING MESSAGES HERE
+			
+			
+			
 		});
 		exitAppButton.setOnMouseEntered(e -> {
 			exitAppButton.setStyle(HOVERED);
