@@ -159,7 +159,7 @@ public class MessagePage {
 		//Adding info image
 		Image image = null;
 		try {
-			image = new Image(new FileInputStream("src/info.png"), 800, 800, true, true);
+			image = new Image(new FileInputStream("info.png"), 800, 800, true, true);
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
