@@ -1,26 +1,43 @@
 # MosaHackathonMotivateApp
 The Motivate App 
 
+<p align="center">
+<img src=logo.png width=100>
+</p>
+
 # What is Motivate for?
 
   We often take on long term goals that require focus, discipline, and staying motivated for an extended period of time. These goals might be things like working out, earning a graduate degree, or eating healthy. The hardest part of accomplishing these goals is staying diligent and motivated until completion, often weeks or months down the line. 
 
-  We can paste a motivational quote in our rooms or smartphone background to keep ourselves on track, but static reminders such as these often become boring to look at over time, and we grow numb to what made that specific message so motivational to us in the first place. This experience in our own lives inspired us to design an app that keeps the motivation customized and fresh, keeping you motivated until you accomplish your long term goal. 
+  We can paste a motivational quote in our rooms or smartphone background to keep ourselves on track, but static reminders such as these often become boring to look at over time, and we forget what made that specific message so motivational to us in the first place. This experience in our own lives led us to design an app that keeps the inspiration customized and fresh, keeping you motivated until you accomplish your long term goal. 
 
 # What it does
 
-  Here enters the Motivate App. It keeps you motivated by sending you customized and fresh motivation messages to your future self to help you accomplish your long term goals. A user simply enters his/her goal, the start and end dates of the goal, the frequency at which they’d like to receive motivational messages, their phone number, and motivational messages you would want to send to your future self. When you’re done, hit submit. 
+  Here enters the Motivate App. It makes the process of achieving our goals be more fun and less draining, through sending you customized and fresh motivation messages throughout the period you wish to accomplish your long term goals. You simply enter your goal, the start and end dates of the goal, the frequency at which you'd like to receive motivational messages, your phone number, and some motivational messages you would want to send to your future self. When you’re done, hit submit. 
 
   You’ll then get a welcome message from the app, and then your motivational messages will come at random times during the day at a frequency you desire (eg. twice a day, once a day, every other day, and once a week). 
 
   For example, if your goal is to get fit over the next two months, you would set the start and end date of your goal, and then craft a set of messages for yourself that you know will motivate you to stay on track. These might be things like a message about how you want to be in good enough shape to run that 10k in two months with your friends, or maybe a link to an inspirational video or song that gets you fired up and ambitious. Then, just wait and you’ll start to get these random bursts of inspiration as you work to meet your goal, keeping you focused on the journey to success.
 
 # How to launch the app
-1. In Eclipse, click on the black arrow next to the green "Run" button 
-2. Click Run Configurations
-3. Under "Main" tab, make sure the Main Class is runner.MotivationRunner
-4. Go to the “Arguments” tab and ensure that the “Use the -XstartOnFirstThread argument when launching with SWT” checkbox is NOT checked.
+1. Pull this repository from Github, open an Eclipse workspace, and import as a Java project. 
+2. Click on the black arrow next to the green "Run" button 
+3. Click Run Configurations
+4. Under "Main" tab, make sure the Main Class is runner.MotivationRunner
+5. Go to the “Arguments” tab and ensure that the “Use the -XstartOnFirstThread argument when launching with SWT” checkbox is NOT checked.
+6. Click the green "Run" button again, and wait for the window shown below to appear, and follow the instructions on the page.  
 
+<p align="center">
+<img src="homescreen.png" width = 200>
+</p>
+
+When you're done, hit the Continue button on the bottom. 
+
+7. On your phone, you should receive a welcome text like so, after all steps are complete. Make sure to leave the program open on the computer during the entire duration of your goal to continue receiving messages.
+
+<p align="center">
+<img src="WelcomeTextMsg.png" width = 200> 
+</p>
 
 # Required Software and Versions
 

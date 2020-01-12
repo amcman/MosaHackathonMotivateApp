@@ -167,38 +167,40 @@ public class ThankYouPopUp {
 			// Send initial welcome message 
 			SmsSender smsSender = new SmsSender(user);
 			smsSender.sendWelcome();
-			try {
-				Thread.sleep (5000);// Pause the program for 5 seconds (5000 milliseconds)
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} 
-			
-			// Send the first motivational message; for live demo only
-			smsSender.sendSms(); 
-			
-			// Loop ends after all the motivational messages are sent
-			ValueCalculators valueCalc = new ValueCalculators(user);
-			for (int i = 0; i < valueCalc.getNumOfMsgs(); i++) {
-				Thread thread = new Thread(){
-				    public void run(){
+			Thread thread1 = new Thread() {
+				public void run(){
 				    	try {
-							long duration = valueCalc.getRandomDuration();
-							//TimeUnit.MILLISECONDS.sleep(duration);
-							Thread.sleep(duration);
-							smsSender.sendSms();
-							//TimeUnit.MILLISECONDS.sleep(valueCalc.getFreqMillisec()- duration);
-							Thread.sleep(valueCalc.getFreqMillisec()- duration); // Program sleeps for the rest of the cycle duration
+							Thread.sleep (5000);// Pause the program for 5 seconds (5000 milliseconds)
+							// Send the first motivational message; for live demo only
+							smsSender.sendSms(); 
 						} catch (InterruptedException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
+				}
+			};
+			thread1.start();
+			// Loop ends after all the motivational messages are sent
+			ValueCalculators valueCalc = new ValueCalculators(user);
+				Thread thread = new Thread(){
+				    public void run(){
+						for (int i = 0; i < valueCalc.getNumOfMsgs(); i++) {
+					    	try {
+								long duration = valueCalc.getRandomDuration();
+								//TimeUnit.MILLISECONDS.sleep(duration);
+								Thread.sleep(duration);
+								smsSender.sendSms();
+								//TimeUnit.MILLISECONDS.sleep(valueCalc.getFreqMillisec()- duration);
+								Thread.sleep(valueCalc.getFreqMillisec() - duration); // Program sleeps for the rest of the cycle duration
+							} catch (InterruptedException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+				    	}
 				    }
 				  };
 
 				  thread.start();
-	        }
-			
 		});
 		exitAppButton.setOnMouseEntered(e -> {
 			exitAppButton.setStyle(HOVERED);
