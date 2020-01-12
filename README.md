@@ -15,6 +15,8 @@ The Motivate App
 
   For example, if your goal is to get fit over the next two months, you would set the start and end date of your goal, and then craft a set of messages for yourself that you know will motivate you to stay on track. These might be things like a message about how you want to be in good enough shape to run that 10k in two months with your friends, or maybe a link to an inspirational video or song that gets you fired up and ambitious. Then, just wait and you’ll start to get these random bursts of inspiration as you work to meet your goal, keeping you focused on the journey to success.
 
+# How to launch the app
+
 # Required Software and Versions
 
   To run this program, you will need to install JavaFX 11, Java 13, a Java IDE of your choice (most recent version of Eclipse recommended), and Twilio. JavaFX 11 and Twilio will be two sets of files you can download off the internet. The files for Twilio have been provided for you in the repository. Once you have those installed, simply follow the below instructions to add the libraries to your project:
@@ -32,3 +34,6 @@ The Motivate App
 
 
 Once both libraries have been imported, you can go ahead and run the “MotivationRunner.java” file. Note: if the app is not running, check the run configurations on each file in the program to make sure that the “Use the -XstartOnFirstThread…” checkbox is NOT checked. Sometimes this can be an issue in JavaFX.
+
+# Future thoughts
+
