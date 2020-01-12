@@ -53,6 +53,7 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import backend.SmsSender;
 import backend.User;
@@ -179,15 +180,23 @@ public class ThankYouPopUp {
 			// Loop ends after all the motivational messages are sent
 			ValueCalculators valueCalc = new ValueCalculators(user);
 			for (int i = 0; i < valueCalc.getNumOfMsgs(); i++) {
-				try {
-					long duration = valueCalc.getRandomDuration();
-					Thread.sleep(duration);
-					smsSender.sendSms();
-					Thread.sleep(valueCalc.getFreqMillisec()- duration); // Program sleeps for the rest of the cycle duration
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				Thread thread = new Thread(){
+				    public void run(){
+				    	try {
+							long duration = valueCalc.getRandomDuration();
+							//TimeUnit.MILLISECONDS.sleep(duration);
+							Thread.sleep(duration);
+							smsSender.sendSms();
+							//TimeUnit.MILLISECONDS.sleep(valueCalc.getFreqMillisec()- duration);
+							Thread.sleep(valueCalc.getFreqMillisec()- duration); // Program sleeps for the rest of the cycle duration
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				    }
+				  };
+
+				  thread.start();
 	        }
 			
 		});
