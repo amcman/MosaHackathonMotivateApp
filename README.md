@@ -25,9 +25,11 @@ The Motivate App
 5. Go to the “Arguments” tab and ensure that the “Use the -XstartOnFirstThread argument when launching with SWT” checkbox is NOT checked.
 6. Click the green "Run" button again, and wait for the window shown below to appear, and follow the instructions on the page.  
 
-<img src="homescreen.png">
+<img src="homescreen.png" width = 200>
 
+7. You should receive a welcome text like so, after all steps are complete. Make sure to leave the program open on the computer during the entire duration of your goal to continue receiving messages.
 
+<img src="WelcomeTextMsg.png" width = 200> 
 
 # Required Software and Versions
 
