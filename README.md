@@ -7,11 +7,11 @@ The Motivate App
 
   We often take on long term goals that require focus, discipline, and staying motivated for an extended period of time. These goals might be things like working out, earning a graduate degree, or eating healthy. The hardest part of accomplishing these goals is staying diligent and motivated until completion, often weeks or months down the line. 
 
-  We can paste a motivational quote in our rooms or smartphone background to keep ourselves on track, but static reminders such as these often become boring to look at over time, and we grow numb to what made that specific message so motivational to us in the first place. This experience in our own lives inspired us to design an app that keeps the motivation customized and fresh, keeping you motivated until you accomplish your long term goal. 
+  We can paste a motivational quote in our rooms or smartphone background to keep ourselves on track, but static reminders such as these often become boring to look at over time, and we forget what made that specific message so motivational to us in the first place. This experience in our own lives led us to design an app that keeps the inspiration customized and fresh, keeping you motivated until you accomplish your long term goal. 
 
 # What it does
 
-  Here enters the Motivate App. It keeps you motivated by sending you customized and fresh motivation messages to your future self to help you accomplish your long term goals. A user simply enters his/her goal, the start and end dates of the goal, the frequency at which they’d like to receive motivational messages, their phone number, and motivational messages you would want to send to your future self. When you’re done, hit submit. 
+  Here enters the Motivate App. It makes the process of achieving our goals be more fun and less draining, through sending you customized and fresh motivation messages throughout the period you wish to accomplish your long term goals. You simply enters your goal, the start and end dates of the goal, the frequency at which you'd like to receive motivational messages, your phone number, and some motivational messages you would want to send to your future self. When you’re done, hit submit. 
 
   You’ll then get a welcome message from the app, and then your motivational messages will come at random times during the day at a frequency you desire (eg. twice a day, once a day, every other day, and once a week). 
 
