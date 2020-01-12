@@ -24,7 +24,22 @@ public class SmsSender {
     public static final String AUTH_TOKEN =
             "";
 
-    // Text the user a motivational message
+    // Text the user the initial welcome message
+    public void sendWelcome() {
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+        Message message = Message
+                .creator(new PhoneNumber(user.getPhone()), // to
+                        new PhoneNumber("+13605295695" + 
+                        		""), // from
+                        "Welcome to Motivate! Let's accomplish your goal!")
+                .create();
+
+        System.out.println(message.getSid());
+    }
+    
+    
+    // Text the user a random motivational message
     public void sendSms() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
