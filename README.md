@@ -16,6 +16,9 @@ The Motivate App
   For example, if your goal is to get fit over the next two months, you would set the start and end date of your goal, and then craft a set of messages for yourself that you know will motivate you to stay on track. These might be things like a message about how you want to be in good enough shape to run that 10k in two months with your friends, or maybe a link to an inspirational video or song that gets you fired up and ambitious. Then, just wait and you’ll start to get these random bursts of inspiration as you work to meet your goal, keeping you focused on the journey to success.
 
 # How to launch the app
+1. In Eclipse, click on the black arrow next to the green "Run" button 
+2. Click Run Configurations
+3. Make sure the Main Class is runner.MotivationRunner
 
 # Required Software and Versions
 
