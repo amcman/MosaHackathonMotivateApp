@@ -18,10 +18,13 @@ The Motivate App
   For example, if your goal is to get fit over the next two months, you would set the start and end date of your goal, and then craft a set of messages for yourself that you know will motivate you to stay on track. These might be things like a message about how you want to be in good enough shape to run that 10k in two months with your friends, or maybe a link to an inspirational video or song that gets you fired up and ambitious. Then, just wait and you’ll start to get these random bursts of inspiration as you work to meet your goal, keeping you focused on the journey to success.
 
 # How to launch the app
-1. In Eclipse, click on the black arrow next to the green "Run" button 
-2. Click Run Configurations
-3. Under "Main" tab, make sure the Main Class is runner.MotivationRunner
-4. Go to the “Arguments” tab and ensure that the “Use the -XstartOnFirstThread argument when launching with SWT” checkbox is NOT checked.
+1. 
+2. In Eclipse, click on the black arrow next to the green "Run" button 
+3. Click Run Configurations
+4. Under "Main" tab, make sure the Main Class is runner.MotivationRunner
+5. Go to the “Arguments” tab and ensure that the “Use the -XstartOnFirstThread argument when launching with SWT” checkbox is NOT checked.
+6. Click the green "Run" button again, and wait for a window to appear. 
+
 
 
 # Required Software and Versions
