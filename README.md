@@ -1,7 +1,9 @@
 # MosaHackathonMotivateApp
 The Motivate App 
 
+<p align="center">
 <img src=logo.png width=100>
+</p>
 
 # What is Motivate for?
 
