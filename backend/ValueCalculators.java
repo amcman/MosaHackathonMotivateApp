@@ -1,22 +1,27 @@
 package backend;
 
+import java.util.Calendar;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class ValueCalculators {
 
 	User user; 
+	long twelveHrMillisec = TimeUnit.HOURS.toMillis(12);
+	Random r = new Random();
 	
 	public ValueCalculators(User u) {
 		this.user = u; 
 	}
-		
+	
+	
 	// Calculates the number of days the goal will last 
 	public int getNumOfDays() {
 		long durationInMilliSec = user.getEndDate().getTime() - user.getStartDate().getTime();
 		return (int) TimeUnit.MILLISECONDS.toDays(durationInMilliSec); 
 	}
 	
-	// Helper method to convert frequency from String to int
+	// Helper method to convert frequency from String to Double
 	public double getFreqNum() {
 		
 		double freq=0; 
@@ -34,11 +39,10 @@ public class ValueCalculators {
 		case "Once a week":
 			freq = (1.0/7.0);
 			break;
-		}
-		
-		return freq; 
-		
+		}	
+		return freq; 	
 	}
+	
 	
 	// Calculates the number of msgs needed/to be sent
 	public int getNumOfMsgs() {
@@ -46,17 +50,41 @@ public class ValueCalculators {
 		return (int) (getNumOfDays() * getFreqNum()); 
 	}
 	
-	// TO DO for Helen
-		// Calculate the sleep cycle: goal duration / frequency (in milliseconds)
-	public int calcSleepCycle() {
-		return 0; 
+	// Converts the frequency to milliseconds
+	public long getFreqMillisec () {
+		long freqMillisec = 0;
+		
+		switch(user.getdailyFreq()) {
+		case "Twice a day":
+			freqMillisec = TimeUnit.HOURS.toMillis(12); // 12 hours to milliseconds
+			break;
+		case "Once a day":
+			freqMillisec = TimeUnit.DAYS.toMillis(1); // 1 day to milliseconds
+			break;
+		case "Every other day":
+			freqMillisec = TimeUnit.DAYS.toMillis(2); // 2 days to milliseconds
+			break;
+		case "Once a week":
+			freqMillisec = TimeUnit.DAYS.toMillis(7); // 7 days to milliseconds
+			break;
+		}
+		return freqMillisec;
 	}
 	
+	// TO DO for Helen
+		// Calculate the sleep cycle: goal duration / frequency (in milliseconds)
+	//public int calcSleepCycle() {
+		//return 0; 
+	//}
+	
 	// TO DO for Xunjing
-	// Generates a random duration in milliseconds within the desired time window
-	public int getRandomDuration(){
-			
-		return 0; 
+	// Generates a random duration in milliseconds within the desired time window (8am-8pm)
+	public long getRandomDuration(){
+		long randomDurationMillisec = 0; 
+		Calendar rightNow = Calendar.getInstance();
+		
+		int randomMillisec = r.nextInt((int)twelveHrMillisec);
+		return randomDurationMillisec; 
 	}
 	
 }
