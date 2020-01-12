@@ -71,20 +71,22 @@ public class ValueCalculators {
 		return freqMillisec;
 	}
 	
-	// TO DO for Helen
-		// Calculate the sleep cycle: goal duration / frequency (in milliseconds)
-	//public int calcSleepCycle() {
-		//return 0; 
-	//}
-	
-	// TO DO for Xunjing
 	// Generates a random duration in milliseconds within the desired time window (8am-8pm)
 	public long getRandomDuration(){
-		long randomDurationMillisec = 0; 
-		Calendar rightNow = Calendar.getInstance();
+		long randomDuration = 0; 
+		//Calendar rightNow = Calendar.getInstance();
+		int randomMillisec = r.nextInt((int)twelveHrMillisec); // Generates a random duration within the 12 hour window (8am-8pm)
+		int hourOfDay  = Calendar.HOUR_OF_DAY; // 24 hour clock
 		
-		int randomMillisec = r.nextInt((int)twelveHrMillisec);
-		return randomDurationMillisec; 
+		if (hourOfDay < 20 && hourOfDay >= 8) {	
+			randomDuration = (long)randomMillisec; 
+		} else if (hourOfDay < 8) {
+			randomDuration = (8 - hourOfDay) + randomMillisec; 
+			
+		} else {
+			randomDuration = (23 - hourOfDay + 8) + randomMillisec; 
+		}
+		return randomDuration; 
 	}
 	
 }
