@@ -174,16 +174,17 @@ public class ThankYouPopUp {
 				e1.printStackTrace();
 			} 
 			
-			// Send the first motivational message
+			// Send the first motivational message; for live demo only
 			smsSender.sendSms(); 
 			
 			// Loop ends after all the motivational messages are sent
 			ValueCalculators valueCalc = new ValueCalculators(user);
 			for (int i = 0; i < valueCalc.getNumOfMsgs(); i++) {
 				try {
-					Thread.sleep(valueCalc.getRandomDuration());
+					long duration = valueCalc.getRandomDuration();
+					Thread.sleep(duration);
 					smsSender.sendSms();
-					Thread.sleep(valueCalc.getFreqMillisec()- valueCalc.getRandomDuration()); // Program sleeps for the rest of the cycle duration
+					Thread.sleep(valueCalc.getFreqMillisec()- duration); // Program sleeps for the rest of the cycle duration
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
