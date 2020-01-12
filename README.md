@@ -36,4 +36,4 @@ The Motivate App
 Once both libraries have been imported, you can go ahead and run the “MotivationRunner.java” file. Note: if the app is not running, check the run configurations on each file in the program to make sure that the “Use the -XstartOnFirstThread…” checkbox is NOT checked. Sometimes this can be an issue in JavaFX.
 
 # Future thoughts
-
+We'd love to have it hosted on the web and make it available for anyone to use. 
