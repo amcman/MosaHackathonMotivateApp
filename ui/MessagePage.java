@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import backend.User;
+import backend.ValueCalculators;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -107,6 +108,7 @@ public class MessagePage {
 		/*
 		 * ADDING INTRODUCTION TEXT
 		 */
+		ValueCalculators valueCalcs = new ValueCalculators(user);
 		Text directionsText = new Text(
 				
 				"The box below will allow you to create and save motivational "
@@ -114,9 +116,9 @@ public class MessagePage {
 				+ "click \"Save and Continue\" to write another. When you are done "
 				+ "writing messages for yourself, click \"Submit\". \n" + 
 				"\n" + 
-				"Because your goal is \"" + "INPUT GOAL DAYS HERE" + "\" days long and you would like to receive "
+				"Because your goal is " + valueCalcs.getNumOfDays() + " days long and you would like to receive "
 				+ "messages, at a frequency of " + user.getdailyFreq().toLowerCase() + ", it's recommended that you input up "
-				+ "to " + "INPUT NUMBER OF MESSAGES" +  " unique "
+				+ "to " + valueCalcs.getNumOfMsgs() +  " unique "
 				+ "messages. However, if you'd like to submit fewer than that, that "
 				+ "is okay. \n" + 
 				"\n" + 
