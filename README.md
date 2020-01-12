@@ -1,6 +1,8 @@
 # MosaHackathonMotivateApp
 The Motivate App 
 
+<img src=logo.png width=100>
+
 # What is Motivate for?
 
   We often take on long term goals that require focus, discipline, and staying motivated for an extended period of time. These goals might be things like working out, earning a graduate degree, or eating healthy. The hardest part of accomplishing these goals is staying diligent and motivated until completion, often weeks or months down the line. 
