@@ -74,17 +74,15 @@ public class ValueCalculators {
 	// Generates a random duration in milliseconds within the desired time window (8am-8pm)
 	public long getRandomDuration(){
 		long randomDuration = 0; 
-		//Calendar rightNow = Calendar.getInstance();
 		int randomMillisec = r.nextInt((int)twelveHrMillisec); // Generates a random duration within the 12 hour window (8am-8pm)
 		int hourOfDay  = Calendar.HOUR_OF_DAY; // 24 hour clock
 		
 		if (hourOfDay < 20 && hourOfDay >= 8) {	
 			randomDuration = (long)randomMillisec; 
 		} else if (hourOfDay < 8) {
-			randomDuration = (8 - hourOfDay) + randomMillisec; 
-			
+			randomDuration = (8 - hourOfDay)*3600000 + randomMillisec; 
 		} else {
-			randomDuration = (23 - hourOfDay + 8) + randomMillisec; 
+			randomDuration = (23 - hourOfDay + 8)*3600000 + randomMillisec; 
 		}
 		return randomDuration; 
 	}
