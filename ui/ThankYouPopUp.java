@@ -50,11 +50,13 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
-
+import backend.SmsSender;
 import backend.User;
+import backend.ValueCalculators;
 import javafx.event.ActionEvent;
 
 
@@ -161,9 +163,32 @@ public class ThankYouPopUp {
 		exitAppButton.setStyle(IDLE);
 		exitAppButton.setOnAction(e -> {
 			mainStage.close();
-			//ADD LOOPING FOR SENDING MESSAGES HERE
 			
+			// Send initial welcome message 
+			SmsSender smsSender = new SmsSender(user);
+			smsSender.sendWelcome();
+			try {
+				Thread.sleep (3000);// Pause the program for 3 seconds (3000 milliseconds)
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
 			
+			// Send the first motivational message
+			smsSender.sendSms(); 
+			
+			// Loop ends after all the motivational messages are sent
+			ValueCalculators valueCalc = new ValueCalculators(user);
+			for (int i = 0; i < valueCalc.getNumOfMsgs(); i++) {
+				try {
+					Thread.sleep(valueCalc.getRandomDuration());
+					smsSender.sendSms();
+					Thread.sleep(valueCalc.getFreqMillisec()- valueCalc.getRandomDuration()); // Program sleeps for the rest of the cycle duration
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+	        }
 			
 		});
 		exitAppButton.setOnMouseEntered(e -> {
