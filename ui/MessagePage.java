@@ -92,7 +92,7 @@ public class MessagePage {
 		// Adding info image
 		Image texting = null;
 		try {
-			texting = new Image(new FileInputStream("messageIcon.png"), 800, 800, true, true);
+			texting = new Image(new FileInputStream("textMessageIcon.png"), 800, 800, true, true);
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
