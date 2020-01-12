@@ -18,7 +18,9 @@ The Motivate App
 # How to launch the app
 1. In Eclipse, click on the black arrow next to the green "Run" button 
 2. Click Run Configurations
-3. Make sure the Main Class is runner.MotivationRunner
+3. Under "Main" tab, make sure the Main Class is runner.MotivationRunner
+4. Go to the “Arguments” tab and ensure that the “Use the -XstartOnFirstThread argument when launching with SWT” checkbox is NOT checked.
+
 
 # Required Software and Versions
 
@@ -32,9 +34,6 @@ The Motivate App
 6. Then, select the new library and on the right-hand side click “Add external JAR files” and navigate to the files for either JavaFX or Twilio.
 7. Select all the files that you can from that folder.
 8. Then click “Apply and Close” and you should see the “Add Library” popup again with your new library selected. Click “Finish”.
-9. Now, go to the top menu bar and select “Run” and then “Run Configurations”.
-10. Go to the “Arguments” tab and ensure that the “Use the -XstartOnFirstThread argument when launching with SWT” checkbox is NOT checked.
-
 
 Once both libraries have been imported, you can go ahead and run the “MotivationRunner.java” file. Note: if the app is not running, check the run configurations on each file in the program to make sure that the “Use the -XstartOnFirstThread…” checkbox is NOT checked. Sometimes this can be an issue in JavaFX.
 
