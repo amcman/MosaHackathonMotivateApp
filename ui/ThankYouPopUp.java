@@ -168,7 +168,7 @@ public class ThankYouPopUp {
 			SmsSender smsSender = new SmsSender(user);
 			smsSender.sendWelcome();
 			try {
-				Thread.sleep (3000);// Pause the program for 3 seconds (3000 milliseconds)
+				Thread.sleep (5000);// Pause the program for 5 seconds (5000 milliseconds)
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
