@@ -13,7 +13,7 @@ The Motivate App
 
 # What it does
 
-  Here enters the Motivate App. It makes the process of achieving our goals be more fun and less draining, through sending you customized and fresh motivation messages throughout the period you wish to accomplish your long term goals. You simply enters your goal, the start and end dates of the goal, the frequency at which you'd like to receive motivational messages, your phone number, and some motivational messages you would want to send to your future self. When you’re done, hit submit. 
+  Here enters the Motivate App. It makes the process of achieving our goals be more fun and less draining, through sending you customized and fresh motivation messages throughout the period you wish to accomplish your long term goals. You simply enter your goal, the start and end dates of the goal, the frequency at which you'd like to receive motivational messages, your phone number, and some motivational messages you would want to send to your future self. When you’re done, hit submit. 
 
   You’ll then get a welcome message from the app, and then your motivational messages will come at random times during the day at a frequency you desire (eg. twice a day, once a day, every other day, and once a week). 
 
