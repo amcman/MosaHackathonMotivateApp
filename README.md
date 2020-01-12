@@ -31,6 +31,8 @@ The Motivate App
 <img src="homescreen.png" width = 200>
 </p>
 
+When you're done, hit the Continue button on the bottom. 
+
 7. On your phone, you should receive a welcome text like so, after all steps are complete. Make sure to leave the program open on the computer during the entire duration of your goal to continue receiving messages.
 
 <p align="center">
