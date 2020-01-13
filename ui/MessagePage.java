@@ -38,6 +38,12 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * This class is responsible for showing the message page (screen 2) of the app
+ * and it handles funcitonality on that page.
+ * @author admin
+ *
+ */
 public class MessagePage {
 	//Stage width
 	private int StageX = 700;

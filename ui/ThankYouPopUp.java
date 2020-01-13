@@ -84,7 +84,6 @@ public class ThankYouPopUp {
 	 * This class controls creation of the main stage for the program, as well as
 	 * creation of the home screen scene. It provides information on the app as well
 	 * as a brief form for users to fill out before using it.
-	 * 
 	 * @return This method returns a scene for the home screen (type Scene).
 	 */
 	public Scene start(User user) {
