@@ -25,14 +25,7 @@ public class User {
 	
 	
 	//constructor
-	public User() {//String n, ArrayList<String> msg, String dD,
-			//String dF, String p) {
-		
-		//this.name = n;
-		//this.messages = msg; 
-		//this.dueDate = dD;  
-		//this.dailyFreq = dF;
-		//this.phone = p; 
+	public User() {
 	}
 	
 	//getters and setters 
