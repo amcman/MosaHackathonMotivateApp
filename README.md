@@ -32,7 +32,18 @@ The Motivate App
 </p>
 
   When you're done, hit the Continue button on the bottom. 
-7. You should now be at a page where you can enter messages. 
+7. You should now be at a page where you can enter messages. You can type as many messages as you like, hitting "Save" after each message to type the next one. After you have typed your last message, hit "Submit". 
+
+<p align="center">
+<img src="messagepg.png" width = 200> 
+</p>
+
+8. Finally, you should see a Thank You screen as below. You can now click the "Exit" button to start receiving messages. 
+
+
+<p align="center">
+<img src="thankyou.png" width = 200> 
+</p>
 
 9. On your phone, you should receive a welcome text like so, after all steps are complete. Make sure to leave the program open on the computer during the entire duration of your goal to continue receiving messages.
 
