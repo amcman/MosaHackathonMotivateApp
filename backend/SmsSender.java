@@ -20,9 +20,9 @@ public class SmsSender {
 		
 	// Find your Account Sid and Auth Token at twilio.com/console
 	public static final String ACCOUNT_SID =
-		      "";
+		      "AC0adc56719ee8405ae27948c292d0456a";
 	public static final String AUTH_TOKEN =
-		      "";
+		      "087e44ec23a27114251f484858c706f4";
     // Text the user the initial welcome message
     public void sendWelcome() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
