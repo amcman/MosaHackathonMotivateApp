@@ -32,8 +32,7 @@ public class MotivationProgram extends Application {
    * This method provides a main stage for the application
    * and allows the alternation between pages on the same stage.
    * It handles the process flow of the application.
-   */
-  
+   */ 
   public void start(Stage primaryStage) {
 
         //create user and resultsViewer object
